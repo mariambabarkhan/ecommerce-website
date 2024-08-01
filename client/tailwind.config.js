@@ -22,6 +22,7 @@ module.exports = {
         customPurple: '#6e265c',
         cartBadge: '#5e3653',
         navlinkcol: '#40407d',
+        philCard:'#f5f5f5',
       },
     },
   },
