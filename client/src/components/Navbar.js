@@ -1,18 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FiSearch, FiShoppingBag, FiChevronDown } from 'react-icons/fi';
 import logo from '../images/favicon.ico';
 
 const Navbar = () => {
-    const [openMenu, setOpenMenu] = useState(null);
+    const [openMenu, setOpenMenu] = useState(null); // Track which menu is open
     const [cartItemCount, setCartItemCount] = useState(0); // Manage cart items here
+    const menuRef = useRef(null); // Ref for the menu container
 
+    // Toggle menu and close any other open menu
     const toggleMenu = (menu) => {
         setOpenMenu(openMenu === menu ? null : menu);
     };
 
+    // Close the menu when clicking outside of it
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setOpenMenu(null);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
     return (
         <nav className="bg-white border-b border-gray-200 font-body">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto px-4">
                 <div className="flex items-center justify-between h-20 mt-5">
                     {/* Search Icon */}
                     <div className="flex-shrink-0">
@@ -40,7 +54,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Navbar Links */}
-                <div className=" font-thin tracking-widest flex mt-5 items-center justify-center space-x-6 text-sm  text-gray-700">
+                <div ref={menuRef} className="tracking-widest flex mt-5 items-center justify-center space-x-6 text-sm text-gray-700">
                     <a href="/" className="hover:underline hover:text-black">
                         Home
                     </a>
@@ -50,7 +64,7 @@ const Navbar = () => {
                     <div className="relative">
                         <button
                             onClick={() => toggleMenu('category')}
-                            className="hover:underline hover:text-black flex items-center space-x-1 focus:outline-none"
+                            className="hover:underline hover:text-black flex items-center space-x-1"
                         >
                             <span>Shop By Category</span>
                             <FiChevronDown size={16} />
@@ -75,7 +89,7 @@ const Navbar = () => {
                     <div className="relative">
                         <button
                             onClick={() => toggleMenu('skinConcern')}
-                            className="hover:underline hover:text-black flex items-center space-x-1 focus:outline-none"
+                            className="hover:underline hover:text-black flex items-center space-x-1"
                         >
                             <span>Shop By Skin Concern</span>
                             <FiChevronDown size={16} />
