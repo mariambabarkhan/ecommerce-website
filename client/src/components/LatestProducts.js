@@ -49,7 +49,7 @@ const LatestProducts = () => {
     ];
 
     return (
-        <div className="container mx-auto py-12">
+        <div className="container mx-auto p-10">
             <h1 className="text-4xl font-heading text-center mb-12">Latest Products</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                 {products.map(product => (

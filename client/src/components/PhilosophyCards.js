@@ -3,7 +3,7 @@ import ShopNowBtn from './ShopNowBtn';
 
 const PhilosophyCards = () => {
   return (
-    <div className="container mx-auto mt-16 py-12">
+    <div className="container mx-auto p-10">
       <h2 className="text-4xl font-heading text-center mb-12 tracking-wider">Discover the Blissful Difference</h2>
       <div className="flex flex-nowrap justify-center gap-8 tracking-wider font-normal">
         <div className="w-full sm:w-1/3 p-4">

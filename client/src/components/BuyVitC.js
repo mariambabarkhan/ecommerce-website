@@ -7,7 +7,7 @@ const BuyVitC = () => {
     const decreaseQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
 
     return (
-        <div className="flex flex-wrap md:flex-nowrap bg-white overflow-hidden mb-12 ml-32">
+        <div className="flex flex-wrap md:flex-nowrap bg-white overflow-hidden mb-12 ml-28 p-10">
             {/* Product Image Section */}
             <div className="relative w-full md:w-1/2 p-4 mr-32">
                 <img

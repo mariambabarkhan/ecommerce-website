@@ -4,8 +4,8 @@ import logo from '../images/favicon.ico'; // Assuming you have a Logo component
 
 const Footer = () => {
   return (
-    <footer className="bg-transparent text-black">
-      <div className="container mx-auto px-4 py-8">
+    <footer className="bg-transparent text-black p-10">
+      <div className="container mx-auto">
         {/* Subscribe Section */}
         <div className="flex flex-col items-center justify-center mb-8">
           <h3 className="text-3xl font-semibold font-body mb-4">Subscribe to our emails</h3><br></br>

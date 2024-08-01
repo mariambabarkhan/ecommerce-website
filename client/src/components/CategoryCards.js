@@ -3,7 +3,7 @@ import { FiArrowRight } from 'react-icons/fi';
 
 const CategoryCards = () => {
   return (
-    <div className="container mx-auto mt-10">
+    <div className="container mx-auto p-10">
       <h2 className="text-3xl font-heading text-center mb-8 tracking-wider">Shop By Category</h2>
       <div className="flex flex-wrap justify-center">
         <a href="/"  className="w-full md:w-1/2 lg:w-1/4 p-4">
