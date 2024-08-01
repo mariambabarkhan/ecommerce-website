@@ -6,6 +6,7 @@ import Banner from '../components/Banner';
 import CategoryCards from '../components/CategoryCards';
 import PhilosophyCards from '../components/PhilosophyCards';
 import Footer from '../components/Footer';
+import LatestProducts from '../components/LatestProducts';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <Banner />
             <CategoryCards />
             <PhilosophyCards />
+            <LatestProducts />
             <Footer />
         </div>
     );
