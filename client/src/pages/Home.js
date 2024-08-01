@@ -2,7 +2,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Sale from '../components/Sale';
-import HeroSection from '../components/HeroSection';
+import Banner from '../components/Banner';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
     <div>
       <Sale />
       <Navbar />
-      <HeroSection />
+      <Banner />
       <Footer />
     </div>
   );

@@ -25,7 +25,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className="bg-white border-b border-gray-200 font-body">
+        <nav className="bg-white border-gray-200 font-body">
             <div className="max-w-6xl mx-auto px-4">
                 <div className="flex items-center justify-between h-20 mt-5">
                     {/* Search Icon */}
@@ -45,7 +45,7 @@ const Navbar = () => {
                         <button className="p-2 relative" onClick={() => setCartItemCount(cartItemCount + 1)}>
                             <FiShoppingBag size={24} />
                             {cartItemCount > 0 && (
-                                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-cartBadge rounded-full">
+                                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-1 text-xs font-body leading-none text-white bg-cartBadge rounded-full">
                                     {cartItemCount}
                                 </span>
                             )}
