@@ -7,6 +7,7 @@ import CategoryCards from '../components/CategoryCards';
 import PhilosophyCards from '../components/PhilosophyCards';
 import Footer from '../components/Footer';
 import LatestProducts from '../components/LatestProducts';
+import BuyVitC from '../components/BuyVitC';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <CategoryCards />
             <PhilosophyCards />
             <LatestProducts />
+            <BuyVitC />
             <Footer />
         </div>
     );
