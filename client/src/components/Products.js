@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
     const [hovered, setHovered] = useState(null);
@@ -257,7 +258,9 @@ const Products = () => {
                                 )}
                                 <div className="text-lg text-gray-800">{product.price}</div>
                             </div>
-                            <button className="mt-4 bg-white border border-gray-400 text-gray-800 text-sm px-4 py-2 rounded hover:bg-gray-100">Add to cart</button>
+                            <Link to='/cart'>
+                                <button className="mt-4 bg-white border border-gray-400 text-gray-800 text-sm px-4 py-2 rounded hover:bg-gray-100">Add to cart</button>
+                            </Link>
                         </div>
 
                     </motion.div>
