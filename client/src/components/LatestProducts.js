@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const LatestProducts = () => {
     const [hovered, setHovered] = useState(null);
+
+    const { ref, inView } = useInView({
+        triggerOnce: false, // Animate every time it comes into view
+        threshold: 0.1 // Adjust as needed
+    });
 
     const products = [
         {
@@ -49,15 +56,25 @@ const LatestProducts = () => {
     ];
 
     return (
-        <div className="container mx-auto p-10">
+        <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="container mx-auto p-10"
+        >
             <h1 className="text-4xl font-heading text-center mb-12">Latest Products</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                {products.map(product => (
-                    <div
+                {products.map((product, index) => (
+                    <motion.div
                         key={product.id}
-                        className="bg-white w-90 rounded-lg shadow-lg overflow-hidden group cursor-pointer transition-transform transform hover:scale-105"
+                        className="bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer transition-transform transform hover:scale-105"
                         onMouseEnter={() => setHovered(product.id)}
                         onMouseLeave={() => setHovered(null)}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                        transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+                        layout
                     >
                         <img
                             src={hovered === product.id ? product.hoverImage : product.image}
@@ -68,10 +85,10 @@ const LatestProducts = () => {
                             <h3 className="text-lg font-body font-semibold mb-2 group-hover:underline">{product.name}</h3>
                             <p className="text-md font-body text-gray-700">{product.price}</p>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
-        </div>
+        </motion.div>
     );
 }
 

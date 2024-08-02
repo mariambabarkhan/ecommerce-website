@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const BuyVitC = () => {
     const [quantity, setQuantity] = useState(1);
     const increaseQuantity = () => setQuantity(quantity + 1);
     const decreaseQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
 
+    const { ref, inView } = useInView({
+        triggerOnce: false, // Set to false to animate every time it comes into view
+        threshold: 0.1 // Adjust as needed
+    });
+
     return (
-        <div className="flex flex-wrap md:flex-nowrap bg-white overflow-hidden mb-12 ml-28 p-10">
+        <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex flex-wrap md:flex-nowrap bg-white overflow-hidden mb-12 ml-28 p-10"
+        >
             {/* Product Image Section */}
             <div className="relative w-full md:w-1/2 p-4 mr-32">
                 <img
@@ -61,7 +74,7 @@ const BuyVitC = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
