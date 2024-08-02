@@ -9,8 +9,8 @@ const BuyVitC = () => {
     const decreaseQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
 
     const { ref, inView } = useInView({
-        triggerOnce: false, // Set to false to animate every time it comes into view
-        threshold: 0.1 // Adjust as needed
+        triggerOnce: false, 
+        threshold: 0.1 
     });
 
     return (

@@ -3,16 +3,14 @@ import { FiSearch, FiShoppingBag, FiChevronDown } from 'react-icons/fi';
 import logo from '../images/favicon.ico';
 
 const Navbar = () => {
-    const [openMenu, setOpenMenu] = useState(null); // Track which menu is open
-    const [cartItemCount, setCartItemCount] = useState(0); // Manage cart items here
-    const menuRef = useRef(null); // Ref for the menu container
+    const [openMenu, setOpenMenu] = useState(null); 
+    const [cartItemCount, setCartItemCount] = useState(0); 
+    const menuRef = useRef(null); 
 
-    // Toggle menu and close any other open menu
     const toggleMenu = (menu) => {
         setOpenMenu(openMenu === menu ? null : menu);
     };
 
-    // Close the menu when clicking outside of it
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (menuRef.current && !menuRef.current.contains(event.target)) {

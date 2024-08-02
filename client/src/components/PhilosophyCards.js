@@ -3,7 +3,6 @@ import { useInView } from 'react-intersection-observer';
 import ShopNowBtn from './ShopNowBtn';
 
 const PhilosophyCards = () => {
-  // Intersection observers
   const { ref: headingRef, inView: headingInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,

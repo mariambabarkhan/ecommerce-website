@@ -7,7 +7,7 @@ const LatestProducts = () => {
 
     const { ref, inView } = useInView({
         triggerOnce: false,
-        threshold: 0.1 // Adjust as needed
+        threshold: 0.1 
     });
 
     const products = [
@@ -55,7 +55,6 @@ const LatestProducts = () => {
         }
     ];
 
-    // Animation variants
     const fadeInUp = {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0 }
@@ -65,8 +64,8 @@ const LatestProducts = () => {
         hidden: {},
         visible: {
             transition: {
-                staggerChildren: 0.2, // Increase the delay between child animations
-                duration: 1, // Total duration for container animation
+                staggerChildren: 0.2, 
+                duration: 1, 
                 ease: "easeOut"
             }
         }

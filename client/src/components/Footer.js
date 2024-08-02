@@ -2,10 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaFacebookF, FaInstagram, FaArrowRight } from 'react-icons/fa';
-import logo from '../images/favicon.ico'; // Make sure the path is correct
+import logo from '../images/favicon.ico'; 
 
 const Footer = () => {
-  // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 }
@@ -15,12 +14,11 @@ const Footer = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.2, // Increase delay between each child animation
+        staggerChildren: 0.2, 
       },
     },
   };
 
-  // Use Intersection Observer for each section
   const { ref: subscribeRef, inView: subscribeInView } = useInView({ triggerOnce: false });
   const { ref: logoRef, inView: logoInView } = useInView({ triggerOnce: false });
   const { ref: quickLinksRef, inView: quickLinksInView } = useInView({ triggerOnce: false });
@@ -40,7 +38,7 @@ const Footer = () => {
           ref={subscribeRef}
           variants={fadeInUp}
           animate={subscribeInView ? "visible" : "hidden"}
-          transition={{ duration: 1 }} // Increase the duration
+          transition={{ duration: 1 }} 
           className="flex flex-col items-center justify-center mb-8"
         >
           <h3 className="text-3xl font-semibold font-body mb-4">Subscribe to our emails</h3>
@@ -62,7 +60,7 @@ const Footer = () => {
             ref={logoRef}
             variants={fadeInUp}
             animate={logoInView ? "visible" : "hidden"}
-            transition={{ duration: 1 }} // Increase the duration
+            transition={{ duration: 1 }}
             className="flex-shrink-0 mb-8 md:mb-0"
           >
             <img src={logo} alt="Logo" className="w-52 mr-72" />
@@ -73,7 +71,7 @@ const Footer = () => {
             ref={quickLinksRef}
             variants={fadeInUp}
             animate={quickLinksInView ? "visible" : "hidden"}
-            transition={{ duration: 1 }} // Increase the duration
+            transition={{ duration: 1 }} 
             className="flex-1 mt-4 md:mt-0"
           >
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
@@ -90,7 +88,7 @@ const Footer = () => {
             ref={userInfoRef}
             variants={fadeInUp}
             animate={userInfoInView ? "visible" : "hidden"}
-            transition={{ duration: 1 }} // Increase the duration
+            transition={{ duration: 1 }} 
             className="flex-1 mt-4 md:mt-0"
           >
             <h3 className="text-lg font-semibold mb-4">User Info</h3>
@@ -108,7 +106,7 @@ const Footer = () => {
             ref={contactUsRef}
             variants={fadeInUp}
             animate={contactUsInView ? "visible" : "hidden"}
-            transition={{ duration: 1 }} // Increase the duration
+            transition={{ duration: 1 }} 
             className="flex-1 mt-4 md:mt-0"
           >
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
@@ -124,7 +122,7 @@ const Footer = () => {
       <motion.div
         variants={fadeInUp}
         animate={contactUsInView ? "visible" : "hidden"}
-        transition={{ duration: 1 }} // Increase the duration
+        transition={{ duration: 1 }} 
         className="bg-transparent py-4"
       >
         <div className="container mx-auto px-4 text-center">
