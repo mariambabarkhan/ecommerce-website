@@ -6,7 +6,7 @@ import { FiArrowRight } from 'react-icons/fi';
 const CategoryCard = ({ children, delay }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
-    triggerOnce: false,
+    triggerOnce: false,  
     threshold: 0.1,
   });
 

@@ -1,11 +1,30 @@
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
 import ShopNowBtn from './ShopNowBtn';
 
 const PhilosophyCards = () => {
+  // Intersection observers
+  const { ref: headingRef, inView: headingInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const { ref: cardsRef, inView: cardsInView } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+
   return (
     <div className="container mx-auto p-10">
-      <h2 className="text-4xl font-heading text-center mb-12 tracking-wider">Discover the Blissful Difference</h2>
-      <div className="flex flex-nowrap justify-center gap-8 tracking-wider font-normal">
+      <h2
+        ref={headingRef}
+        className={`text-4xl font-heading text-center mb-12 tracking-wider transition-transform duration-1000 ${headingInView ? 'transform translate-y-0 opacity-100' : 'transform translate-y-10 opacity-0'}`}
+      >
+        Discover the Blissful Difference
+      </h2>
+      <div
+        ref={cardsRef}
+        className={`flex flex-nowrap justify-center gap-8 tracking-wider font-normal transition-transform duration-1000 ${cardsInView ? 'transform translate-y-0 opacity-100' : 'transform translate-y-10 opacity-0'}`}
+      >
         <div className="w-full sm:w-1/3 p-4">
           <div className="bg-philCard rounded-lg shadow-lg p-6 text-left h-72 flex flex-col justify-between">
             <div>
@@ -37,9 +56,7 @@ const PhilosophyCards = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center">
-        <ShopNowBtn />
-      </div>
+      <ShopNowBtn />
     </div>
   );
 };
