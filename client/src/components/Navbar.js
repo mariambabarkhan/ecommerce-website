@@ -73,23 +73,23 @@ const Navbar = () => {
                         </button>
                         {openMenu === 'category' && (
                             <div className="absolute left-0 mt-2 w-48 bg-cartBadge border border-gray-200 shadow-lg rounded-2xl">
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Serum
                                 </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Moisturizer
                                 </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Cleanser
                                 </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Sunscreen
                                 </a>
                             </div>
                         )}
                     </div>
                     </Link>
-                    <Link to="/collections" className="hover:underline hover:text-black">
+                    <Link to="/collections" className="hover:underline ">
                     <div className="relative z-10">
                         <button
                             onClick={() => toggleMenu('skinConcern')}
@@ -100,28 +100,28 @@ const Navbar = () => {
                         </button>
                         {openMenu === 'skinConcern' && (
                             <div className="absolute left-0 mt-2 w-48 bg-cartBadge border border-gray-200 shadow-lg rounded-2xl">
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dehydration & Dryness
                                 </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dullness & Uneven Tone
                                 </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Breakouts & Acne
                                 </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Texture, Pores & Oily Skin
                                 </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dark Spots & Discoloration
                                 </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Healthy Aging
                                 </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Makeup Removing & Deep Cleansing
                                 </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline hover:text-black">
+                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Sun Protection
                                 </a>
                             </div>

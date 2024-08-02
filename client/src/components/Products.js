@@ -240,18 +240,22 @@ const Products = () => {
                         animate={inView ? "visible" : "hidden"}
                         transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
                     >
-                        <div className="relative">
-                            <img
+                        <div className="relative overflow-hidden">
+                            <motion.img
                                 src={hovered === product.id ? product.hoverImage : product.image}
                                 alt={product.name}
-                                className="w-full h-full object-cover rounded-t-lg"
+                                className={`w-full h-full object-cover rounded-t-lg transition-transform duration-500 ${hovered === product.id ? 'scale-105' : ''}`}
+                                initial={{ opacity: 1 }}
+                                animate={{ opacity: hovered === product.id ? 1 : 1 }}
                             />
                             {product.sale && (
                                 <span className="absolute bottom-2 left-2 bg-cartBadge text-white text-xs px-4 py-1 rounded-xl">Sale</span>
                             )}
                         </div>
                         <div className="mt-4 p-4 text-center">
-                            <h2 className="text-lg font-semibold text-gray-800">{product.name}</h2>
+                            <h2 className={`text-lg font-semibold text-gray-800 transition-all duration-300 ${hovered === product.id ? 'underline' : ''}`}>
+                                {product.name}
+                            </h2>
                             <div className="flex justify-center items-center space-x-2 mt-1">
                                 {product.sale && (
                                     <div className="text-gray-500 line-through">{product.oldPrice}</div>
@@ -262,12 +266,12 @@ const Products = () => {
                                 <button className="mt-4 bg-white border border-gray-400 text-gray-800 text-sm px-4 py-2 rounded hover:bg-gray-100">Add to cart</button>
                             </Link>
                         </div>
-
                     </motion.div>
                 ))}
             </div>
         </motion.div>
     );
+    
 }
 
 export default Products;
