@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FiSearch, FiShoppingBag, FiChevronDown } from 'react-icons/fi';
 import logo from '../images/favicon.ico';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    const [openMenu, setOpenMenu] = useState(null); 
-    const [cartItemCount, setCartItemCount] = useState(0); 
-    const menuRef = useRef(null); 
+    const [openMenu, setOpenMenu] = useState(null);
+    const [cartItemCount, setCartItemCount] = useState(0);
+    const menuRef = useRef(null);
 
     const toggleMenu = (menu) => {
         setOpenMenu(openMenu === menu ? null : menu);
@@ -127,9 +128,9 @@ const Navbar = () => {
                     <a href="/" className="hover:underline hover:text-black">
                         About Us
                     </a>
-                    <a href="/" className="hover:underline hover:text-black">
+                    <Link to="/contact" className="hover:underline hover:text-black">
                         Contact Us
-                    </a>
+                    </Link>
                 </div>
             </div>
         </nav>
