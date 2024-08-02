@@ -6,7 +6,7 @@ const LatestProducts = () => {
     const [hovered, setHovered] = useState(null);
 
     const { ref, inView } = useInView({
-        triggerOnce: false, // Animate every time it comes into view
+        triggerOnce: false,
         threshold: 0.1 // Adjust as needed
     });
 
@@ -55,31 +55,48 @@ const LatestProducts = () => {
         }
     ];
 
+    // Animation variants
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 }
+    };
+
+    const container = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.2, // Increase the delay between child animations
+                duration: 1, // Total duration for container animation
+                ease: "easeOut"
+            }
+        }
+    };
+
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="container mx-auto p-10"
+            variants={container}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            className="container mx-auto p-10 min-h-screen mb-10"
         >
             <h1 className="text-4xl font-heading text-center mb-12">Latest Products</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                 {products.map((product, index) => (
                     <motion.div
                         key={product.id}
-                        className="bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer transition-transform transform hover:scale-105"
+                        className="bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer"
                         onMouseEnter={() => setHovered(product.id)}
                         onMouseLeave={() => setHovered(null)}
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                        transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                        layout
+                        variants={fadeInUp}
+                        initial="hidden"
+                        animate={inView ? "visible" : "hidden"}
+                        transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
                     >
                         <img
                             src={hovered === product.id ? product.hoverImage : product.image}
                             alt={product.name}
-                            className="object-cover transition-transform duration-300"
+                            className="object-cover transition-transform duration-500 ease-in-out"
                         />
                         <div className="p-4 text-center">
                             <h3 className="text-lg font-body font-semibold mb-2 group-hover:underline">{product.name}</h3>
