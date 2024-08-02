@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaArrowRight } from 'react-icons/fa';
 import logo from '../images/favicon.ico'; 
 
-const Footer = () => {
+const HomeFooter = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 }
@@ -19,6 +19,7 @@ const Footer = () => {
     },
   };
 
+  const { ref: subscribeRef, inView: subscribeInView } = useInView({ triggerOnce: false });
   const { ref: logoRef, inView: logoInView } = useInView({ triggerOnce: false });
   const { ref: quickLinksRef, inView: quickLinksInView } = useInView({ triggerOnce: false });
   const { ref: userInfoRef, inView: userInfoInView } = useInView({ triggerOnce: false });
@@ -32,6 +33,27 @@ const Footer = () => {
       className="bg-transparent text-black p-10"
     >
       <div className="container mx-auto">
+        {/* Subscribe Section */}
+        <motion.div
+          ref={subscribeRef}
+          variants={fadeInUp}
+          animate={subscribeInView ? "visible" : "hidden"}
+          transition={{ duration: 1 }} 
+          className="flex flex-col items-center justify-center mb-8"
+        >
+          <h3 className="text-3xl font-semibold font-body mb-4">Subscribe to our emails</h3>
+          <div className="flex items-center">
+            <input
+              type="email"
+              placeholder="Email"
+              className="bg-white border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-1 focus:ring-black md:mr-2"
+            />
+            <button className="bg-black hover:bg-gray-800 text-white font-semibold rounded-lg py-2 px-4 flex items-center">
+              <FaArrowRight size={16} />
+            </button>
+          </div>
+        </motion.div>
+
         <div className="flex flex-wrap md:flex-nowrap items-start justify-between">
           {/* Logo Section */}
           <motion.div
@@ -122,4 +144,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default HomeFooter;

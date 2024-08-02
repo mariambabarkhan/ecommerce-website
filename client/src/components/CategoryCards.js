@@ -59,7 +59,7 @@ const CategoryCards = () => {
   return (
     <div className="container mx-auto p-10">
       <h2 className="text-3xl font-heading text-center mb-8 tracking-wider">Shop By Category</h2>
-      <div className="flex flex-wrap justify-center">
+      <a href='/' className="flex flex-wrap justify-center">
         {categories.map((category, index) => (
           <CategoryCard key={category.title} delay={index * 0.3}>
             <div className="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl group transition-shadow duration-300">
@@ -80,7 +80,7 @@ const CategoryCards = () => {
             </div>
           </CategoryCard>
         ))}
-      </div>
+      </a>
     </div>
   );
 };

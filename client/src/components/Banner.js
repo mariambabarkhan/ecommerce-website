@@ -5,7 +5,7 @@ import ShopNowBtn from './ShopNowBtn';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 150 }
+  visible: { opacity: 1, y: 200 }
 };
 
 const Banner = () => {
@@ -22,7 +22,7 @@ const Banner = () => {
         animate={bannerInView ? "visible" : "hidden"}
         variants={fadeInUp}
         transition={{ duration: 1, ease: "easeOut" }}
-        className='relative flex items-center justify-center h-screen bg-auto bg-center mt-10'
+        className='relative flex items-center justify-center h-screen bg-auto bg-center z-0'
       >
         <img src="//shopblissfulbeauty.com/cdn/shop/files/banner_5.png?v=1693455474&amp;width=3840" alt="" srcset="//shopblissfulbeauty.com/cdn/shop/files/banner_5.png?v=1693455474&amp;width=375 375w, //shopblissfulbeauty.com/cdn/shop/files/banner_5.png?v=1693455474&amp;width=550 550w, //shopblissfulbeauty.com/cdn/shop/files/banner_5.png?v=1693455474&amp;width=750 750w, //shopblissfulbeauty.com/cdn/shop/files/banner_5.png?v=1693455474&amp;width=1100 1100w, //shopblissfulbeauty.com/cdn/shop/files/banner_5.png?v=1693455474&amp;width=1500 1500w, //shopblissfulbeauty.com/cdn/shop/files/banner_5.png?v=1693455474&amp;width=1780 1780w, //shopblissfulbeauty.com/cdn/shop/files/banner_5.png?v=1693455474&amp;width=2000 2000w, //shopblissfulbeauty.com/cdn/shop/files/banner_5.png?v=1693455474&amp;width=3000 3000w, //shopblissfulbeauty.com/cdn/shop/files/banner_5.png?v=1693455474&amp;width=3840 3840w" height="2755" sizes="100vw" fetchpriority="high">
         </img>

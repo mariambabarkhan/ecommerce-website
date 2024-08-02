@@ -2,17 +2,17 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Sale from "../components/Sale";
 import Footer from "../components/Footer";
-import CollectionCategories from "../components/CollectionCategories";
+import Products from "../components/Products";
 
-const Collections = () => {
+const AllCollections = () => {
     return (
         <div>
             <Sale />
             <Navbar />
-            <CollectionCategories />
+            <Products />
             <Footer />
         </div>
     );
 };
 
-export default Collections;
+export default AllCollections;

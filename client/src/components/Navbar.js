@@ -24,7 +24,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className="bg-white border-gray-200 font-body z-50">
+        <nav className="bg-white border-gray-200 font-body z-10">
             <div className="max-w-6xl mx-auto px-4">
                 <div className="flex items-center justify-between h-20 mt-5">
                     {/* Search Icon */}
@@ -41,6 +41,7 @@ const Navbar = () => {
 
                     {/* Cart Icon */}
                     <div className="flex-shrink-0">
+                        <Link to="/cart" className="p-2">
                         <button className="p-2 relative" onClick={() => setCartItemCount(cartItemCount + 1)}>
                             <FiShoppingBag size={24} />
                             {cartItemCount > 0 && (
@@ -49,6 +50,7 @@ const Navbar = () => {
                                 </span>
                             )}
                         </button>
+                        </Link>
                     </div>
                 </div>
 
@@ -57,10 +59,11 @@ const Navbar = () => {
                     <a href="/" className="hover:underline hover:text-black">
                         Home
                     </a>
-                    <a href="/" className="hover:underline hover:text-black">
+                    <Link to="/collections/all" className="hover:underline hover:text-black">
                         Shop All
-                    </a>
-                    <div className="relative">
+                    </Link>
+                    <Link to='/collections'>
+                    <div className="relative z-10">
                         <button
                             onClick={() => toggleMenu('category')}
                             className="hover:underline hover:text-black flex items-center space-x-1"
@@ -85,7 +88,9 @@ const Navbar = () => {
                             </div>
                         )}
                     </div>
-                    <div className="relative">
+                    </Link>
+                    <Link to="/collections" className="hover:underline hover:text-black">
+                    <div className="relative z-10">
                         <button
                             onClick={() => toggleMenu('skinConcern')}
                             className="hover:underline hover:text-black flex items-center space-x-1"
@@ -122,7 +127,8 @@ const Navbar = () => {
                             </div>
                         )}
                     </div>
-                    <a href="/" className="hover:underline hover:text-black">
+                    </Link>
+                    <a href="/collections" className="hover:underline hover:text-black">
                         Bundles
                     </a>
                     <a href="/" className="hover:underline hover:text-black">
