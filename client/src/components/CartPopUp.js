@@ -1,11 +1,12 @@
-// CartPopUp.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
+import { useCart } from '../context/CartContext';
 
-const CartPopUp = ({ product, cartItemCount, onClose }) => {
+const CartPopUp = ({ product, onClose }) => {
     const [show, setShow] = useState(true);
     const controls = useAnimation();
+    const { cartItemCount } = useCart();
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -55,6 +56,6 @@ const CartPopUp = ({ product, cartItemCount, onClose }) => {
             </div>
         </motion.div>
     );
-}
+};
 
 export default CartPopUp;

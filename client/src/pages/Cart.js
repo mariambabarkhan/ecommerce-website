@@ -2,16 +2,14 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Sale from '../components/Sale';
 import Footer from '../components/Footer';
-// import CartItems from '../components/CartItems';
-// import CartSummary from '../components/CartSummary';
+import CartInfo from '../components/CartInfo';
 
 const Cart = () => {
     return (
         <div>
             <Sale />
             <Navbar />
-            {/* <CartItems /> */}
-            {/* <CartSummary /> */}
+            <CartInfo />
             <Footer />
         </div>
     );

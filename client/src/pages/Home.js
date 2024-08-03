@@ -8,6 +8,7 @@ import HomeFooter from '../components/HomeFooter';
 import LatestProducts from '../components/LatestProducts';
 import BuyVitC from '../components/BuyVitC';
 import CartPopUp from '../components/CartPopUp';
+import { CartProvider } from '../context/CartContext';
 
 const Home = () => {
     const [showCartPopUp, setShowCartPopUp] = useState(false);
@@ -15,7 +16,7 @@ const Home = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     const handleAddToCart = (product) => {
-        setCartItemCount(cartItemCount + 1);
+        setCartItemCount(cartItemCount + product.quantity);
         setSelectedProduct(product);
         setShowCartPopUp(true);
         setTimeout(() => {
@@ -28,25 +29,27 @@ const Home = () => {
     };
 
     return (
-        <div>
-            <Sale />
-            <Navbar />
-            <Banner />
-            <CategoryCards />
-            <PhilosophyCards />
-            <LatestProducts />
-            <div className="relative">
-                <BuyVitC onAddToCart={handleAddToCart} />
-                {showCartPopUp && (
-                    <CartPopUp
-                        product={selectedProduct}
-                        cartItemCount={cartItemCount}
-                        onClose={handleClosePopUp}
-                    />
-                )}
+        <CartProvider>
+            <div>
+                <Sale />
+                <Navbar />
+                <Banner />
+                <CategoryCards />
+                <PhilosophyCards />
+                <LatestProducts />
+                <div className="relative">
+                    <BuyVitC onAddToCart={handleAddToCart} />
+                    {showCartPopUp && (
+                        <CartPopUp
+                            product={selectedProduct}
+                            cartItemCount={cartItemCount}
+                            onClose={handleClosePopUp}
+                        />
+                    )}
+                </div>
+                <HomeFooter />
             </div>
-            <HomeFooter />
-        </div>
+        </CartProvider>
     );
 };
 

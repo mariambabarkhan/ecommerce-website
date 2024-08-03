@@ -3,21 +3,24 @@ import { FiArrowRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import AddToCartBtn from './AddToCartBtn';
+import { Link } from 'react-router-dom';
 
 const BuyVitC = ({ onAddToCart }) => {
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     const increaseQuantity = () => setQuantity(quantity + 1);
     const decreaseQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
 
     const { ref, inView } = useInView({
-        triggerOnce: false, 
-        threshold: 0.1 
+        triggerOnce: false,
+        threshold: 0.1
     });
 
     const product = {
         image: 'https://shopblissfulbeauty.com/cdn/shop/files/Serum4.jpg?v=1700379826&width=720',
         name: 'Brightening Serum - Vitamin C',
-        size: '30ml'
+        size: '30ml',
+        price: 2200,
+        currency: 'PKR'
     };
 
     return (
@@ -67,10 +70,12 @@ const BuyVitC = ({ onAddToCart }) => {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col space-y-4">
-                    <AddToCartBtn product={product} onAddToCart={onAddToCart} />    
-                    <button className="bg-cartBadge rounded-lg w-96 py-3 text-white text-lg font-body hover:bg-opacity-90 transition duration-300">
+                    <AddToCartBtn product={product} quantity={quantity} onAddToCart={onAddToCart} />
+                    <Link to="/cart">
+                    <button className="bg-cartBadge rounded-lg w-1/2 py-3 text-white text-lg font-body hover:bg-opacity-90 transition duration-300">
                         Buy it now
                     </button>
+                    </Link>
                     <div className="flex items-center">
                         <a href="/" className="text-black hover:underline flex items-center">
                             View full details

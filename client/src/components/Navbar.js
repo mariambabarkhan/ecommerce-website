@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FiSearch, FiShoppingBag, FiChevronDown } from 'react-icons/fi';
 import logo from '../images/favicon.ico';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(null);
-    const [cartItemCount, setCartItemCount] = useState(0);
     const menuRef = useRef(null);
+    const { cartItemCount } = useCart(); 
 
     const toggleMenu = (menu) => {
         setOpenMenu(openMenu === menu ? null : menu);
@@ -42,14 +43,14 @@ const Navbar = () => {
                     {/* Cart Icon */}
                     <div className="flex-shrink-0">
                         <Link to="/cart" className="p-2">
-                        <button className="p-2 relative" onClick={() => setCartItemCount(cartItemCount + 1)}>
-                            <FiShoppingBag size={24} />
-                            {cartItemCount > 0 && (
-                                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-1 text-xs font-body leading-none text-white bg-cartBadge rounded-full">
-                                    {cartItemCount}
-                                </span>
-                            )}
-                        </button>
+                            <button className="p-2 relative">
+                                <FiShoppingBag size={24} />
+                                {cartItemCount > 0 && (
+                                    <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-1 text-xs font-body leading-none text-white bg-cartBadge rounded-full">
+                                        {cartItemCount}
+                                    </span>
+                                )}
+                            </button>
                         </Link>
                     </div>
                 </div>
