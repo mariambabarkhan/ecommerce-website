@@ -132,9 +132,9 @@ const Navbar = () => {
                     <a href="/collections" className="hover:underline hover:text-black">
                         Bundles
                     </a>
-                    <a href="/" className="hover:underline hover:text-black">
+                    <Link to="/about" className="hover:underline hover:text-black">
                         About Us
-                    </a>
+                    </Link>
                     <Link to="/contact" className="hover:underline hover:text-black">
                         Contact Us
                     </Link>

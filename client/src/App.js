@@ -7,6 +7,7 @@ import Collections from './pages/Collections';
 import AllCollections from './pages/AllCollections';
 import { CartProvider } from './context/CartContext';
 import './styles/App.css';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/about" element={<AboutUs />} />
             <Route path="/collections" element={<Collections />} />
             <Route path="/collections/all" element={<AllCollections />} />
           </Routes>
