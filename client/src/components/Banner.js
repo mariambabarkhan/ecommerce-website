@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import ShopNowBtn from './ShopNowBtn';
+import { Link } from 'react-router-dom';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
@@ -41,7 +42,9 @@ const Banner = () => {
           <h2 className='text-sm text-black font-body tracking-widest'>
             More Than Skincare, It's a Lifestyle of Radiance
           </h2>
-          <ShopNowBtn />
+          <Link to="/collections">
+            <ShopNowBtn />
+          </Link>
         </div>
       </motion.div>
 
@@ -55,7 +58,7 @@ const Banner = () => {
       >
         <h1 className='text-3xl font-bodyBold text-black mb-10'> Welcome to Blissful Skincare </h1>
         <h2 className='text-md text-black font-body mb-10'>Your one stop for your skin care solutions.</h2>
-        <ShopNowBtn />
+        <Link to="/collections/all"><ShopNowBtn /></Link>
       </motion.div>
     </>
   );

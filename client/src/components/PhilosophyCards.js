@@ -1,6 +1,7 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import ShopNowBtn from './ShopNowBtn';
+import {Link} from 'react-router-dom';
 
 const PhilosophyCards = () => {
   const { ref: headingRef, inView: headingInView } = useInView({
@@ -55,7 +56,7 @@ const PhilosophyCards = () => {
           </div>
         </div>
       </div>
-      <ShopNowBtn />
+      <Link to="/collections/all"><ShopNowBtn /></Link>
     </div>
   );
 };

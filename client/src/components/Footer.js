@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import logo from '../images/favicon.ico'; 
+import logo from '../images/favicon.ico';
 
 const Footer = () => {
   const fadeInUp = {
@@ -14,7 +14,7 @@ const Footer = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.2, 
+        staggerChildren: 0.2,
       },
     },
   };
@@ -49,7 +49,7 @@ const Footer = () => {
             ref={quickLinksRef}
             variants={fadeInUp}
             animate={quickLinksInView ? "visible" : "hidden"}
-            transition={{ duration: 1 }} 
+            transition={{ duration: 1 }}
             className="flex-1 mt-4 md:mt-0"
           >
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
@@ -66,7 +66,7 @@ const Footer = () => {
             ref={userInfoRef}
             variants={fadeInUp}
             animate={userInfoInView ? "visible" : "hidden"}
-            transition={{ duration: 1 }} 
+            transition={{ duration: 1 }}
             className="flex-1 mt-4 md:mt-0"
           >
             <h3 className="text-lg font-semibold mb-4">User Info</h3>
@@ -84,7 +84,7 @@ const Footer = () => {
             ref={contactUsRef}
             variants={fadeInUp}
             animate={contactUsInView ? "visible" : "hidden"}
-            transition={{ duration: 1 }} 
+            transition={{ duration: 1 }}
             className="flex-1 mt-4 md:mt-0"
           >
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
@@ -100,15 +100,15 @@ const Footer = () => {
       <motion.div
         variants={fadeInUp}
         animate={contactUsInView ? "visible" : "hidden"}
-        transition={{ duration: 1 }} 
+        transition={{ duration: 1 }}
         className="bg-transparent py-4"
       >
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center space-x-4 mb-4">
-            <a href="/" className="text-black hover:text-gray-600">
+            <a href="https://shopblissfulbeauty.com/#" className="text-black hover:text-gray-600">
               <FaFacebookF size={24} />
             </a>
-            <a href="/" className="text-black hover:text-gray-600">
+            <a href="https://www.instagram.com/blissfulbeautypakistan/" className="text-black hover:text-gray-600">
               <FaInstagram size={24} />
             </a>
           </div>
