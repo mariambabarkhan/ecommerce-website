@@ -58,7 +58,7 @@ const CategoryCards = () => {
 
   return (
     <div className="container mx-auto p-10">
-      <h2 className="text-3xl font-heading text-center mb-8 tracking-wider">Shop By Category</h2>
+      <h2 className="text-3xl font-heading text-center mb-8 tracking-wider mt-8">Shop By Category</h2>
       <a href='/' className="flex flex-wrap justify-center">
         {categories.map((category, index) => (
           <CategoryCard key={category.title} delay={index * 0.3}>

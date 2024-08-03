@@ -8,9 +8,19 @@ const fadeInUp = {
   visible: { opacity: 1, y: 200 }
 };
 
+const fadeInUpCap = {
+  hidden: { opacity: 0, y: 250 },
+  visible: { opacity: 1, y: 200 }
+};
+
 const Banner = () => {
   const { ref: bannerRef, inView: bannerInView } = useInView({
     triggerOnce: true,
+    threshold: 0.1
+  });
+
+  const { ref: bannerCaptionRef, inView: bannerCaptionInView } = useInView({
+    triggerOnce: false,
     threshold: 0.1
   });
 
@@ -36,10 +46,11 @@ const Banner = () => {
       </motion.div>
 
       <motion.div
+        ref={bannerCaptionRef}
         initial="hidden"
-        animate={bannerInView ? "visible" : "hidden"}
-        variants={fadeInUp}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }} // Add delay for staggered effect
+        animate={bannerCaptionInView ? "visible" : "hidden"}
+        variants={fadeInUpCap}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
         className='tracking-wider relative flex-col h-auto mt-44 items-center justify-center p-6 text-center mb-36'
       >
         <h1 className='text-3xl font-bodyBold text-black mb-10'> Welcome to Blissful Skincare </h1>
