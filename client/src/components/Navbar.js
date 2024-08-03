@@ -24,9 +24,9 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className="bg-white border-gray-200 font-body z-10">
+        <nav className="bg-white border-gray-200 font-body z-10 relative">
             <div className="max-w-6xl mx-auto px-4">
-                <div className="flex items-center justify-between h-20 mt-5">
+                <div className="flex items-center justify-between h-20 mt-5 relative">
                     {/* Search Icon */}
                     <div className="flex-shrink-0">
                         <button className="p-2">

@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import AddToCartBtn from './AddToCartBtn';
 
-const BuyVitC = () => {
-    const [quantity, setQuantity] = useState(1);
+const BuyVitC = ({ onAddToCart }) => {
+    const [quantity, setQuantity] = useState(0);
     const increaseQuantity = () => setQuantity(quantity + 1);
     const decreaseQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
 
@@ -12,6 +13,12 @@ const BuyVitC = () => {
         triggerOnce: false, 
         threshold: 0.1 
     });
+
+    const product = {
+        image: 'https://shopblissfulbeauty.com/cdn/shop/files/Serum4.jpg?v=1700379826&width=720',
+        name: 'Brightening Serum - Vitamin C',
+        size: '30ml'
+    };
 
     return (
         <motion.div
@@ -24,8 +31,8 @@ const BuyVitC = () => {
             {/* Product Image Section */}
             <div className="relative w-full md:w-1/2 p-4 mr-32">
                 <img
-                    src="https://shopblissfulbeauty.com/cdn/shop/files/Serum4.jpg?v=1700379826&width=720" // Replace with your image URL
-                    alt="Brightening Serum - Vitamin C"
+                    src={product.image}
+                    alt={product.name}
                     className="object-cover w-full h-auto rounded-3xl transition-transform duration-300"
                 />
             </div>
@@ -60,9 +67,7 @@ const BuyVitC = () => {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col space-y-4">
-                    <button className="bg-transparent text-black border-2 border-black w-96 py-2 px-4 rounded-lg font-semibold hover:bg-gray-100">
-                        Add to Cart
-                    </button>
+                    <AddToCartBtn product={product} onAddToCart={onAddToCart} />    
                     <button className="bg-cartBadge rounded-lg w-96 py-3 text-white text-lg font-body hover:bg-opacity-90 transition duration-300">
                         Buy it now
                     </button>
