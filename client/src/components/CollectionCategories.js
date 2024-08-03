@@ -99,9 +99,10 @@ const CollectionCategories = () => {
     return (
         <div className="container mx-auto p-10">
             <h2 className="text-6xl font-bodyheading font-semibold self-start ml-6 mb-8 tracking-wide">Collections</h2>
-            <a href='/collections' className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center">
                 {collections.map((category, index) => (
                     <CollectionCard key={category.title}>
+                        <a href='/collections'>
                         <div className="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl group transition-shadow duration-300 h-[450px]">
                             <img
                                 src={category.img}
@@ -118,9 +119,10 @@ const CollectionCategories = () => {
                                 </a>
                             </div>
                         </div>
+                        </a>
                     </CollectionCard>
                 ))}
-            </a>
+            </div>
         </div>
     );
 };
