@@ -7,7 +7,7 @@ import { useCart } from '../context/CartContext';
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(null);
     const menuRef = useRef(null);
-    const { cartItemCount } = useCart(); 
+    const { cartItemCount } = useCart();
 
     const toggleMenu = (menu) => {
         setOpenMenu(openMenu === menu ? null : menu);
@@ -63,7 +63,6 @@ const Navbar = () => {
                     <Link to="/collections/all" className="hover:underline hover:text-black">
                         Shop All
                     </Link>
-                    <Link to='/collections'>
                     <div className="relative z-10">
                         <button
                             onClick={() => toggleMenu('category')}
@@ -73,24 +72,22 @@ const Navbar = () => {
                             <FiChevronDown size={16} />
                         </button>
                         {openMenu === 'category' && (
-                            <div className="absolute left-0 mt-2 w-48 bg-cartBadge border border-gray-200 shadow-lg rounded-2xl">
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                            <div className="absolute left-0 mt-2 w-48 bg-cartBadge border border-gray-200 shadow-lg rounded-2xl p-2">
+                                <Link to="/collections/serums" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Serum
-                                </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                </Link>
+                                <Link to="/collections/moisturizers" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Moisturizer
-                                </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                </Link>
+                                <Link to="/collections/cleansers" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Cleanser
-                                </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                </Link>
+                                <Link to="/collections/sunscreens" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Sunscreen
-                                </a>
+                                </Link>
                             </div>
                         )}
                     </div>
-                    </Link>
-                    <Link to="/collections" className="hover:underline ">
                     <div className="relative z-10">
                         <button
                             onClick={() => toggleMenu('skinConcern')}
@@ -100,36 +97,35 @@ const Navbar = () => {
                             <FiChevronDown size={16} />
                         </button>
                         {openMenu === 'skinConcern' && (
-                            <div className="absolute left-0 mt-2 w-48 bg-cartBadge border border-gray-200 shadow-lg rounded-2xl">
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                            <div className="absolute left-0 mt-2 w-48 bg-cartBadge border border-gray-200 shadow-lg rounded-2xl p-2">
+                                <Link to="/collections/dryness" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dehydration & Dryness
-                                </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                </Link>
+                                <Link to="/collections/dullness" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dullness & Uneven Tone
-                                </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                </Link>
+                                <Link to="/collections/breakouts" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Breakouts & Acne
-                                </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                </Link>
+                                <Link to="/collections/oilyskin" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Texture, Pores & Oily Skin
-                                </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                </Link>
+                                <Link to="/collections/discoloration" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dark Spots & Discoloration
-                                </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                </Link>
+                                <Link to="/collections/aging" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Healthy Aging
-                                </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                </Link>
+                                <Link to="/collections/cleansing" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Makeup Removing & Deep Cleansing
-                                </a>
-                                <a href="/" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                </Link>
+                                <Link to="/collections/sun-protection" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Sun Protection
-                                </a>
+                                </Link>
                             </div>
                         )}
                     </div>
-                    </Link>
-                    <a href="/collections" className="hover:underline hover:text-black">
+                    <a href="/bundles" className="hover:underline hover:text-black">
                         Bundles
                     </a>
                     <Link to="/about" className="hover:underline hover:text-black">

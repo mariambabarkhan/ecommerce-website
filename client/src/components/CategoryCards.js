@@ -41,25 +41,29 @@ const CategoryCards = () => {
     {
       title: 'Serums',
       img: 'https://shopblissfulbeauty.com/cdn/shop/collections/WhatsApp_Image_2023-09-14_at_09.44.16.jpg?v=1694666697&width=535',
+      linkto: '/collections/serums'
     },
     {
       title: 'Moisturizers',
       img: 'https://shopblissfulbeauty.com/cdn/shop/collections/ASH08166.jpg?v=1700408506&width=535',
+      linkto: '/collections/moisturizers'
     },
     {
       title: 'Cleansers',
       img: 'https://shopblissfulbeauty.com/cdn/shop/collections/ASH08168.jpg?v=1700408678&width=535',
+      linkto: '/collections/cleansers'
     },
     {
       title: 'Sunscreens',
       img: 'https://shopblissfulbeauty.com/cdn/shop/collections/ASH08170.jpg?v=1700408658&width=535',
+      linkto: '/collections/sunscreens'
     },
   ];
 
   return (
     <div className="container mx-auto p-10">
       <h2 className="text-3xl font-heading text-center mb-8 tracking-wider mt-8">Shop By Category</h2>
-      <a href='/' className="flex flex-wrap justify-center">
+      <a href='/collections' className="flex flex-wrap justify-center">
         {categories.map((category, index) => (
           <CategoryCard key={category.title} delay={index * 0.3}>
             <div className="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl group transition-shadow duration-300">
@@ -70,7 +74,7 @@ const CategoryCards = () => {
               />
               <div className="p-6 text-center">
                 <a
-                  href="/"
+                  href={category.linkto}
                   className="text-xl font-semibold font-body mb-2 flex items-center justify-center text-black tracking-wider"
                 >
                   {category.title}
