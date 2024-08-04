@@ -12,11 +12,21 @@ const CartInfo = () => {
 
     return (
         <div className="container mx-auto p-12 min-h-screen">
-            <h1 className="text-2xl font-semibold mb-6">Your Cart</h1>
             {cart.length === 0 ? (
-                <p>Your cart is empty.</p>
+                <div className="flex flex-col space-y-4">
+                    <p className="font-heading text-5xl mb-10 mt-10 self-center">Your cart is empty :(</p>
+                    <Link
+                        to="/collections/all"
+                        className="bg-cartBadge py-3 px-4 w-1/4 text-center rounded-xl text-white font-heading self-center hover:bg-customPurple"
+                    >
+                        Continue Shopping
+                    </Link>
+                    <br></br><br></br><br></br><br></br>
+                </div>
             ) : (
                 <div>
+                    <h1 className="text-3xl font-heading mb-10">Your Cart</h1>
+
                     <div className="flex flex-col space-y-4">
                         {cart.map((item) => (
                             <div key={item.id} className="flex justify-between items-center border-b py-4">
@@ -57,13 +67,13 @@ const CartInfo = () => {
                     <div className="mt-6 flex justify-between">
                         <Link
                             to="/checkout"
-                            className="bg-cartBadge text-white py-2 px-4 rounded hover:bg-cartBadge"
+                            className="bg-cartBadge text-white py-2 px-4 rounded hover:bg-customPurple"
                         >
                             Checkout
                         </Link>
                         <Link
                             to="/collections/all"
-                            className="bg-gray-200 py-2 px-4 rounded hover:bg-gray-300"
+                            className="bg-cartBadge py-2 px-4 rounded text-white font-body hover:bg-customPurple"
                         >
                             Continue Shopping
                         </Link>

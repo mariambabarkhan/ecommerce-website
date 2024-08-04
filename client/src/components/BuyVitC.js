@@ -4,24 +4,28 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import AddToCartBtn from './AddToCartBtn';
 import { Link } from 'react-router-dom';
+import CartPopUp from './CartPopUp';
+import { useCart } from '../context/CartContext';
 
-const BuyVitC = ({ onAddToCart }) => {
+const BuyVitC = () => {
     const [quantity, setQuantity] = useState(1);
     const increaseQuantity = () => setQuantity(quantity + 1);
     const decreaseQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
 
     const { ref, inView } = useInView({
-        triggerOnce: false,
+        triggerOnce: true,
         threshold: 0.1
     });
 
     const product = {
+        id: 1, // Make sure to include an ID for the product
         image: 'https://shopblissfulbeauty.com/cdn/shop/files/Serum4.jpg?v=1700379826&width=720',
         name: 'Brightening Serum - Vitamin C',
         size: '30ml',
-        price: 2200,
-        currency: 'PKR'
+        price: 'Rs.2,200.00 PKR',
     };
+
+    const { isCartPopupVisible } = useCart();
 
     return (
         <motion.div
@@ -70,11 +74,11 @@ const BuyVitC = ({ onAddToCart }) => {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col space-y-4">
-                    <AddToCartBtn product={product} quantity={quantity} onAddToCart={onAddToCart} />
+                    <AddToCartBtn product={product} quantity={quantity} />
                     <Link to="/cart">
-                    <button className="bg-cartBadge rounded-lg w-1/2 py-3 text-white text-lg font-body hover:bg-opacity-90 transition duration-300">
-                        Buy it now
-                    </button>
+                        <button className="bg-cartBadge rounded-lg w-1/2 py-3 text-white text-lg font-body hover:bg-opacity-90 transition duration-300">
+                            Buy it now
+                        </button>
                     </Link>
                     <div className="flex items-center">
                         <a href="/" className="text-black hover:underline flex items-center">
@@ -84,6 +88,8 @@ const BuyVitC = ({ onAddToCart }) => {
                     </div>
                 </div>
             </div>
+
+            {isCartPopupVisible && <CartPopUp />}
         </motion.div>
     );
 };

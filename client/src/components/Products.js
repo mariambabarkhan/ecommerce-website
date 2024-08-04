@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import AddToCartBtn from './AddToCartBtn';
+import { useCart } from '../context/CartContext';
+import CartPopUp from './CartPopUp';
 
 const Products = () => {
     const [hovered, setHovered] = useState(null);
@@ -219,6 +221,8 @@ const Products = () => {
         }
     };
 
+    const { isCartPopupVisible } = useCart();
+
     return (
         <motion.div
             ref={ref}
@@ -262,17 +266,17 @@ const Products = () => {
                                 )}
                                 <div className="text-lg text-gray-800">{product.price}</div>
                             </div>
-                            {/* <Link to='/cart'> */}
-                            <AddToCartBtn product={product} />
-                                {/* <button className="mt-4 bg-white border border-gray-400 text-gray-800 text-sm px-4 py-2 rounded hover:bg-gray-100">Add to cart</button> */}
-                            {/* </Link> */}
+                            <AddToCartBtn product={product} quantity={1} />
+
                         </div>
                     </motion.div>
                 ))}
+            {isCartPopupVisible && <CartPopUp />}
             </div>
+
         </motion.div>
     );
-    
+
 }
 
 export default Products;

@@ -3,44 +3,47 @@ import { Link } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 
-const CartPopUp = ({ product, onClose }) => {
-    const [show, setShow] = useState(true);
+const CartPopUp = () => {
+    const { isCartPopupVisible, popupProduct, closeCartPopup, cartItemCount } = useCart();
+    const [show, setShow] = useState(isCartPopupVisible);
     const controls = useAnimation();
-    const { cartItemCount } = useCart();
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            controls.start({ opacity: 0 });
-            const fadeOutTimer = setTimeout(() => {
-                setShow(false);
-                onClose();
-            }, 500);
-            return () => clearTimeout(fadeOutTimer);
-        }, 3000);
+        if (isCartPopupVisible) {
+            setShow(true);
+            const timer = setTimeout(() => {
+                controls.start({ opacity: 0 });
+                const fadeOutTimer = setTimeout(() => {
+                    setShow(false);
+                    closeCartPopup();
+                }, 500);
+                return () => clearTimeout(fadeOutTimer);
+            }, 3000);
 
-        return () => clearTimeout(timer);
-    }, [controls, onClose]);
+            return () => clearTimeout(timer);
+        }
+    }, [controls, isCartPopupVisible, closeCartPopup]);
 
-    if (!show) return null;
+    if (!show || !popupProduct) return null;
 
     return (
         <motion.div
             initial={{ opacity: 1 }}
             animate={controls}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="absolute top-0 right-10 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-lg z-20 p-4"
+            className="absolute right-10 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-lg z-20 p-4"
         >
             <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">Item added to your cart</span>
-                <button onClick={onClose} className="text-gray-500 hover:text-black">
+                <button onClick={closeCartPopup} className="text-gray-500 hover:text-black">
                     &times;
                 </button>
             </div>
             <div className="mt-4 flex">
-                <img src={product.image} alt={product.name} className="w-16 h-16 rounded-lg" />
+                <img src={popupProduct.image || popupProduct.hoverImage} alt={popupProduct.name} className="w-16 h-16 rounded-lg" />
                 <div className="ml-4">
-                    <h4 className="font-semibold text-gray-900">{product.name}</h4>
-                    <p className="text-sm text-gray-600">Size: {product.size}</p>
+                    <h4 className="font-semibold text-gray-900">{popupProduct.name}</h4>
+                    <p className="text-sm text-gray-600">Size: {popupProduct.size}</p>
                 </div>
             </div>
             <div className="mt-4">

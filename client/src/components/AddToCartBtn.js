@@ -1,11 +1,12 @@
+// AddToCartBtn.js
 import React from 'react';
 import { useCart } from '../context/CartContext';
 
-const AddToCartBtn = ({ product }) => {
+const AddToCartBtn = ({ product, quantity }) => {
     const { addToCart } = useCart();
 
     const handleAddToCart = () => {
-        addToCart({ ...product, quantity: 1 });
+        addToCart({ ...product, quantity });
     };
 
     return (
