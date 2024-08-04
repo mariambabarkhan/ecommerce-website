@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Sale from '../components/Sale';
-import Footer from '../components/Footer';
+import HomeFooter from '../components/HomeFooter';
 import CartInfo from '../components/CartInfo';
 
 const Cart = () => {
@@ -10,7 +10,7 @@ const Cart = () => {
             <Sale />
             <Navbar />
             <CartInfo />
-            <Footer />
+            <HomeFooter />
         </div>
     );
 };

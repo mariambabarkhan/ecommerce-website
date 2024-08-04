@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import logo from '../images/favicon.ico';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const fadeInUp = {
@@ -55,9 +56,9 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><a href="/" className="hover:underline">Home</a></li>
-              <li><a href="/" className="hover:underline">Shop All</a></li>
-              <li><a href="/" className="hover:underline">About Us</a></li>
-              <li><a href="/" className="hover:underline">Contact Us</a></li>
+              <li><Link to="/collections/all" className="hover:underline">Shop All</Link></li>
+              <li><Link to="/about" className="hover:underline">About Us</Link></li>
+              <li><Link to="/contact" className="hover:underline">Contact Us</Link></li>
             </ul>
           </motion.div>
 
@@ -75,7 +76,7 @@ const Footer = () => {
               <li><a href="/" className="hover:underline">Terms of Service</a></li>
               <li><a href="/" className="hover:underline">Refund Policy</a></li>
               <li><a href="/" className="hover:underline">Shipping Policy</a></li>
-              <li><a href="/" className="hover:underline">Contact Us</a></li>
+              <li><Link to="/contact" className="hover:underline">Contact Us</Link></li>
             </ul>
           </motion.div>
 
