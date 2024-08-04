@@ -8,12 +8,16 @@ import AllCollections from './pages/AllCollections';
 import { CartProvider } from './context/CartContext';
 import './styles/App.css';
 import AboutUs from './pages/AboutUs';
+import Sale from './components/Sale';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <CartProvider>
       <Router>
         <div className="App">
+        <Sale />
+        <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />

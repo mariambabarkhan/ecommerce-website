@@ -1,19 +1,15 @@
-// CartContext.js
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+        const savedCart = localStorage.getItem('cart');
+        return savedCart ? JSON.parse(savedCart) : [];
+    });
+    
     const [isCartPopupVisible, setCartPopupVisible] = useState(false);
     const [popupProduct, setPopupProduct] = useState(null);
-
-    useEffect(() => {
-        const savedCart = localStorage.getItem('cart');
-        if (savedCart) {
-            setCart(JSON.parse(savedCart));
-        }
-    }, []);
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));

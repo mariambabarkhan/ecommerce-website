@@ -11,10 +11,10 @@ const CartInfo = () => {
     };
 
     return (
-        <div className="container mx-auto p-12 min-h-screen">
+        <div className="container mx-auto p-12 h-auto">
             {cart.length === 0 ? (
-                <div className="flex flex-col space-y-4">
-                    <p className="font-heading text-5xl mb-10 mt-10 self-center">Your cart is empty :(</p>
+                <div className="flex flex-col space-y-4 mt-20">
+                    <p className="font-heading text-5xl mb-10 self-center">Your cart is empty :(</p>
                     <Link
                         to="/collections/all"
                         className="bg-cartBadge py-3 px-4 w-1/4 text-center rounded-xl text-white font-heading self-center hover:bg-customPurple"
