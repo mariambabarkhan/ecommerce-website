@@ -11,7 +11,7 @@ const CartInfo = () => {
     };
 
     return (
-        <div className="container mx-auto p-12 h-auto">
+        <div className="container mx-auto p-12">
             {cart.length === 0 ? (
                 <div className="flex flex-col space-y-4 mt-20">
                     <p className="font-heading text-5xl mb-10 self-center">Your cart is empty :(</p>
@@ -21,7 +21,6 @@ const CartInfo = () => {
                     >
                         Continue Shopping
                     </Link>
-                    <br></br><br></br><br></br><br></br>
                 </div>
             ) : (
                 <div>
