@@ -15,10 +15,10 @@ const CartPopUp = () => {
                 controls.start({ opacity: 0 });
                 const fadeOutTimer = setTimeout(() => {
                     setShow(false);
-                    closeCartPopup();
+                    closeCartPopup(setShow(false));
                 }, 500);
                 return () => clearTimeout(fadeOutTimer);
-            }, 3000);
+            }, 2000);
 
             return () => clearTimeout(timer);
         }
