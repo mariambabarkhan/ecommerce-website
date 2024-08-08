@@ -5,10 +5,12 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+mongoose.connect('mongodb://127.0.0.1:27017/blissfulDB')
+.then(() => {
+    console.log('Connected to MongoDB successfully');
+})
+.catch((err) => {
+    console.error('Failed to connect to MongoDB:', err.message);
 });
 
 const productSchema = new mongoose.Schema({
@@ -23,8 +25,11 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model('Product', productSchema);
 
-// Routes
-app.get('/products', async (req, res) => {
+app.get('/', (req, res) => {
+    res.send('Server is running, shukkar');
+});
+
+app.get('/collections/all', async (req, res) => {
     try {
         const products = await Product.find();
         res.json(products);
@@ -33,7 +38,6 @@ app.get('/products', async (req, res) => {
     }
 });
 
-// Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
