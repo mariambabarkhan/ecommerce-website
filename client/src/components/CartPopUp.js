@@ -40,7 +40,7 @@ const CartPopUp = () => {
                 </button>
             </div>
             <div className="mt-4 flex">
-                <img src={popupProduct.image || popupProduct.hoverImage} alt={popupProduct.name} className="w-16 h-16 rounded-lg" />
+                <img src={popupProduct.image} alt={popupProduct.name} className="w-16 h-16 rounded-lg" />
                 <div className="ml-4">
                     <h4 className="font-semibold text-gray-900">{popupProduct.name}</h4>
                     <p className="text-sm text-gray-600">Size: {popupProduct.size}</p>

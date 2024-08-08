@@ -28,7 +28,7 @@ const CartInfo = () => {
 
                     <div className="flex flex-col space-y-4">
                         {cart.map((item) => (
-                            <div key={item.id} className="flex justify-between items-center border-b py-4">
+                            <div key={item._id} className="flex justify-between items-center border-b py-4">
                                 <img src={item.image} alt={item.name} className="w-24 h-24 object-cover" />
                                 <div className="flex-1 ml-4">
                                     <h2 className="text-lg font-semibold">{item.name}</h2>
@@ -36,7 +36,7 @@ const CartInfo = () => {
                                     <p className="text-gray-600">Price: {item.price}</p>
                                     <div className="flex items-center mt-2">
                                         <button
-                                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                            onClick={() => updateQuantity(item._id, item.quantity - 1)}
                                             disabled={item.quantity <= 1}
                                             className="px-2 py-1 bg-gray-200 rounded"
                                         >
@@ -44,13 +44,13 @@ const CartInfo = () => {
                                         </button>
                                         <span className="mx-4">{item.quantity}</span>
                                         <button
-                                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                            onClick={() => updateQuantity(item._id, item.quantity + 1)}
                                             className="px-2 py-1 bg-gray-200 rounded"
                                         >
                                             +
                                         </button>
 
-                                        <button onClick={() => removeFromCart(item.id)}
+                                        <button onClick={() => removeFromCart(item._id)}
                                             className="ml-4 text-gray-600 hover:text-gray-800">
                                             <FaTrash />
                                         </button>

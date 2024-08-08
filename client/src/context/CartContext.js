@@ -15,28 +15,32 @@ export const CartProvider = ({ children }) => {
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
 
+    // useEffect(() => {
+    //     localStorage.removeItem('cart');
+    // }, []);
+
     const addToCart = (product) => {
         setCart((prevCart) => {
-            const existingProductIndex = prevCart.findIndex(item => item.id === product.id);
+            const existingProductIndex = prevCart.findIndex(item => item._id === product._id);
             if (existingProductIndex >= 0) {
                 const newCart = [...prevCart];
                 newCart[existingProductIndex].quantity += product.quantity;
                 return newCart;
             }
-            return [...prevCart, product];
+            return [...prevCart, { ...product, quantity: product.quantity }];
         });
         setPopupProduct(product);
         setCartPopupVisible(true);
     };
 
     const removeFromCart = (id) => {
-        setCart(prevCart => prevCart.filter(item => item.id !== id));
+        setCart(prevCart => prevCart.filter(item => item._id !== id));
     };
 
     const updateQuantity = (id, quantity) => {
         setCart(prevCart => {
             return prevCart.map(item =>
-                item.id === id ? { ...item, quantity } : item
+                item._id === id ? { ...item, quantity } : item
             );
         });
     };

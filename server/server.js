@@ -22,7 +22,8 @@ const productSchema = new mongoose.Schema({
     price: String,
     sale: Boolean,
     oldPrice: String,
-    description: String
+    description: String,
+    size: String
 });
 
 const Product = mongoose.model('Product', productSchema);
@@ -46,6 +47,19 @@ app.get('/collections/all', async (req, res) => {
 app.get('/collections/all/:id', async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
+        res.json(product);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+// Fetch Vitamin C product by some unique identifier
+app.get('/products/vitamin-c', async (req, res) => {
+    try {
+        const product = await Product.findOne({ name: 'Brightening Serum - Vitamin C' }); // Adjust the query to match your product
         if (!product) {
             return res.status(404).json({ message: 'Product not found' });
         }
