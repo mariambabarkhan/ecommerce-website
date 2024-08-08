@@ -5,6 +5,7 @@ import AddToCartBtn from './AddToCartBtn';
 import { useCart } from '../context/CartContext';
 import CartPopUp from './CartPopUp';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -80,10 +81,12 @@ const Products = () => {
                             )}
                         </div>
                         <div className="mt-4 p-4 text-center">
-                            <h2 className={`text-lg font-semibold text-gray-800 transition-all duration-300 ${hovered === product._id ? 'underline' : ''}`}>
-                                {product.name}
-                            </h2>
-                            <div className="flex justify-center items-center space-x-2 mt-1">
+                            <Link to={`/product/${product._id}`}>
+                                <h2 className={`text-lg font-semibold text-gray-800 transition-all duration-300 ${hovered === product._id ? 'underline' : ''}`}>
+                                    {product.name}
+                                </h2>
+                            </Link>
+                            <div className="flex justify-center items-center space-x-2 mt-1 mb-4">
                                 {product.sale && (
                                     <div className="text-gray-500 line-through">{product.oldPrice}</div>
                                 )}

@@ -10,6 +10,7 @@ import './styles/App.css';
 import AboutUs from './pages/AboutUs';
 import Sale from './components/Sale';
 import Navbar from './components/Navbar';
+import ProductDetails from './components/ProductDetails';
 import Cleansers from './pages/Cleansers';
 import Dryness from './pages/Dryness';
 import Dullness from './pages/Dullness';
@@ -49,6 +50,7 @@ function App() {
             <Route path="/collections/aging" element={<Aging />} />
             <Route path="/collections/breakouts" element={<Breakouts />} />
             <Route path="/bundles" element={<Bundles />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
           </Routes>
         </div>
       </Router>
