@@ -6,6 +6,7 @@ import { useCart } from '../context/CartContext';
 import CartPopUp from '../components/CartPopUp';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 const CategoryPage = () => {
     const { category } = useParams(); 
@@ -49,6 +50,7 @@ const CategoryPage = () => {
     const { isCartPopupVisible } = useCart();
 
     return (
+        <>
         <motion.div
             ref={ref}
             variants={container}
@@ -100,6 +102,8 @@ const CategoryPage = () => {
             {isCartPopupVisible && <CartPopUp />}
             </div>
         </motion.div>
+        <Footer />
+        </>
     );
 };
 
