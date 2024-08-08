@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -9,32 +8,24 @@ import CartPopUp from './CartPopUp';
 import { useCart } from '../context/CartContext';
 
 const BuyVitC = () => {
-    const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
+    const increaseQuantity = () => setQuantity(quantity + 1);
+    const decreaseQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
+
     const { ref, inView } = useInView({
         triggerOnce: true,
         threshold: 0.1
     });
 
-    const fetchProduct = async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/products/vitamin-c'); // Adjust URL as needed
-            setProduct(response.data);
-        } catch (err) {
-            console.error(err);
-        }
+    const product = {
+        id: 1, // Make sure to include an ID for the product
+        image: 'https://shopblissfulbeauty.com/cdn/shop/files/Serum4.jpg?v=1700379826&width=720',
+        name: 'Brightening Serum - Vitamin C',
+        size: '30ml',
+        price: 'Rs.2,200.00 PKR',
     };
 
-    useEffect(() => {
-        fetchProduct();
-    }, []);
-
-    const increaseQuantity = () => setQuantity(quantity + 1);
-    const decreaseQuantity = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
-
     const { isCartPopupVisible } = useCart();
-
-    if (!product) return <div>Loading...</div>;
 
     return (
         <motion.div
@@ -56,15 +47,15 @@ const BuyVitC = () => {
             {/* Product Details Section */}
             <div className="w-full md:w-1/2 p-4">
                 <h2 className="text-xs font-thin mb-2">BLISSFUL</h2>
-                <h3 className="text-4xl font-semibold mb-4">{product.name.split(' - ')[0]}</h3>
-                <h3 className="text-4xl font-semibold mb-4">{product.name.split(' - ')[1]}</h3>
-                <p className="text-md font-thin font-body mb-4">{product.price}</p>
+                <h3 className="text-4xl font-semibold mb-4">Brightening Serum -</h3>
+                <h3 className="text-4xl font-semibold mb-4">Vitamin C</h3>
+                <p className="text-md font-thin font-body mb-4">Rs.2,200.00 PKR</p>
                 <p className="text-xs mb-4"><a href="/"><u>Shipping</u></a> calculated at checkout.</p>
 
                 {/* Size Selector */}
                 <div className="mb-4">
                     <h4 className="font-semibold mb-2">Size</h4>
-                    <p>{product.size}</p>
+                    <p>30ml</p>
                 </div>
 
                 {/* Quantity Selector */}
@@ -90,7 +81,7 @@ const BuyVitC = () => {
                         </button>
                     </Link>
                     <div className="flex items-center">
-                        <Link to={`http://localhost:3000/product/${product._id}`} className="text-black hover:underline flex items-center">
+                        <Link to="http://localhost:3000/product/66b4bd564f957c539594246b" className="text-black hover:underline flex items-center">
                             View full details
                             <FiArrowRight className="ml-2 text-lg transition-transform duration-300 transform hover:scale-110" />
                         </Link>

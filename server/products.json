@@ -24,7 +24,7 @@
     "sale": true,
     "categories": [
       "bundles",
-      "texture, pores & oily skin"
+      "texture, pores & oily-skin"
     ],
     "description": "Perfect your morning skincare routine with our AM Skincare Bundle designed specifically for oily and combination skin types. This selection aims to balance, hydrate, and protect your skin, ensuring it stays refreshed, clear, and comfortably matte throughout the day. From deep cleansing to sun protection with a touch of color, this bundle has everything you need to maintain a healthy and radiant complexion. Included: Hydrating Cleanser, Barrier Repair Moisturiser, Tinted Sunscreen, Hyaluronic Acid Serum, Thermal Spring Water Spray."
   },
@@ -52,7 +52,9 @@
     "sale": true,
     "categories": [
       "bundles",
-      "dehydration & dryness"
+      "dehydration & dryness",
+      "breakouts & acne",
+      "dark spot & discoloration"
     ],
     "description": "Experience the ultimate skin revival with our Barrier Repair Bundle. Designed to strengthen, hydrate, and restore your skin's natural defenses, this expertly curated set addresses the needs of sensitive and compromised skin barriers. Included: Barrier Repair Cleanser, Barrier Repair Moisturiser, Multi Peptide Centella Serum, Thermal Spring Water Spray."
   },
@@ -66,7 +68,9 @@
     "sale": false,
     "categories": [
       "cleansers",
-      "dehydration & dryness"
+      "dehydration & dryness",
+      "breakouts & acne",
+      "dark spot & discoloration"
     ],
     "description": "Introducing our new Barrier Repair Cleanser. Your skin barriers best friend. Infused with a barrier boosting blend of Centella Asciatica extract, Niacinamide, Ceramides, Hyaluronic Acid, Vitamin E and Aloe extract. Made to cleanse and hydrate your skin while protecting and strengthening your skins protective barrier. Perfect for dry, extremely dry, sensitive and acne prone skin."
   },
@@ -80,7 +84,9 @@
     "sale": false,
     "categories": [
       "moisturizers",
-      "dehydration & dryness"
+      "dehydration & dryness",
+      "breakouts & acne",
+      "dark spot & discoloration"
     ],
     "description": "Our barrier repair moisturiser is a lightweight moisturiser that helps hydrate the skin and restore its natural protective barrier. Formulated with ceramides, hyaluronic acid, vitamin e and aloe vera extract that work together to lock in moisture and improve your barrier health. Leaves skin feeling hydrated and radiant."
   },
@@ -110,7 +116,8 @@
     "categories": [
       "serums",
       "dullness & uneven tone",
-      "dark spot & discoloration"
+      "dark spot & discoloration",
+      "breakouts & acne"
     ],
     "description": "Brighten dark spots and uneven skin tone with our 15% vitamin c, a brightening serum that effectively fights off free radicals, reduces inflammation and evens out skin tone. Contains a stable formulation of ascorbic acid, ferulic acid, vitamin E and sorbitol. Our vitamin c is silky, non sticky and quick absorbing making it perfect for all skin types."
   },
@@ -124,7 +131,9 @@
     "sale": false,
     "categories": [
       "serums",
-      "dehydration & dryness"
+      "dehydration & dryness",
+      "aging",
+      "dark spot & discoloration"
     ],
     "description": "Our lightweight oil free hyaluronic acid contains a blend of hyaluronic acid, ceramides, vitamin e and aloe vera extract which deeply hydrates dry and dehydrated skin and reduces the appearance of fine lines and wrinkles giving you healthy, radiant, bouncy skin. This lightweight formula works great under makeup for skin prep too!"
   },
@@ -181,7 +190,7 @@
     "sale": true,
     "categories": [
       "bundles",
-      "texture, pores & oily skin"
+      "texture, pores & oily-skin"
     ],
     "description": "Embrace a comprehensive skincare regimen with our Mega Bundle, expertly tailored for those with oily and combination skin. This robust collection of products is designed to cleanse, hydrate, protect, and rejuvenate your skin while balancing oil production and improving overall skin texture. Included: Hydrating Cleanser, Barrier Repair Cleanser, Tinted Sunscreen SPF 60, Brightening Serum - Vitamin C, Multi Peptide Centella Serum, Retinol, Hyaluronic Acid Serum, Thermal Spring Water Spray."
   },
@@ -195,7 +204,13 @@
     "sale": false,
     "categories": [
       "serums",
-      "healthy aging"
+      "healthy aging",
+      "breakouts & acne",
+      "dark spot & discoloration",
+      "dehydration & dryness",
+      "dullness & uneven tone",
+      "texture, pores & oily-skin"
+
     ],
     "description": "Introducing our new fast absorbing, lightweight multi peptide serum infused with Centella Asiatica extract that not only defies signs of aging but also soothes and calms irritated skin and reduces redness and inflammation. With the power of tri peptides that give you the ultimate anti aging recipe and provide intense moisture and hydration."
   },
@@ -224,7 +239,7 @@
     "sale": true,
     "categories": [
       "bundles",
-      "texture, pores & oily skin"
+      "texture, pores & oily-skin"
     ],
     "description": "Tailored for oily and combination skin, this PM Skincare Bundle is designed to cleanse, treat, and nourish your skin overnight. With products that balance oil production, reduce breakouts, and enhance skin barrier health, this bundle ensures you wake up to a clearer, more balanced complexion. Included: Hydrating Cleanser, Barrier Repair Moisturizer, Retinol Serum, Multi Peptide Centella Serum."
   },
@@ -239,7 +254,9 @@
     "categories": [
       "serums",
       "healthy aging",
-      "breakouts & acne"
+      "breakouts & acne",
+      "dullness & uneven tone",
+      "texture, pores & oily-skin"
     ],
     "description": "Our potent yet gentle retinol is perfect for beginners and advanced users. This advanced formula contains retinol with squalene oil and vitamin E to limit sensitivity and irritation. Benefits: Reduces fine lines, wrinkles, texture and uneven skin tone, stimulates collagen production, regenerates skin cells, reverses sun damage."
   },
@@ -280,7 +297,6 @@
     "hoverImage": "https://shopblissfulbeauty.com/cdn/shop/files/IMG-0737.png?v=1712599740&width=720",
     "sale": false,
     "categories": [
-      "moisturizers",
       "dehydration & dryness"
     ],
     "description": "FOR THE FIRST TIME IN PAKISTAN. Enriched with minerals to soothe and refresh your skin. BENEFITS: Gently refreshes, rebalances and calms the skin. Rich in selenium with anti oxidant benefits. Neutral pH reduces sensitivity and restores skin balance. Can be used on face and body. Use as a hydrating toner or a mist to refresh your skin or to soothe irritated skin."
@@ -295,7 +311,7 @@
     "sale": false,
     "categories": [
       "sunscreens",
-      "sun protection"
+      "sun-protection"
     ],
     "description": "Protect your skin while getting a healthy glow without any white cast. Our tinted sunscreen is non greasy, suitable for sensitive skin and seamlessly blends into all skin types. Apply two finger lengths onto face and neck at least 15 minutes before sun exposure. Reapply every 2 hours and after prolonged water exposure like swimming. Should be applied daily, even on cloudy days.",
     "howToUse": "Apply two finger lengths onto face and neck at least 15 minutes before sun exposure. Reapply every 2 hours and after prolonged water exposure like swimming. Should be applied daily, even on cloudy days. Use as the last step of your skincare routine. Let your serums and other skincare products fully absorb before applying sunscreen.",

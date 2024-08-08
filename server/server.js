@@ -36,26 +36,29 @@ app.get('/', (req, res) => {
     res.send('Server is running');
 });
 
-app.get('/collections/all', async (req, res) => {
-    try {
-        const products = await Product.find();
-        res.json(products);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
 
 app.get('/collections/:category', async (req, res) => {
+    if(req.params.category === 'all') {
+        try {
+            const products = await Product.find();
+            res.json(products);
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+    }
+    else {
     try {
         const category = req.params.category;
         const products = await Product.find({
-            categories: { $in: [category] }
+            categories: { $regex: category, $options: 'i' } // Case-insensitive search
         });
         res.json(products);
     } catch (err) {
         res.status(500).json({ message: err.message });
-    }
+    } 
+}
 });
+
 
 app.get('/collections/all/:id', async (req, res) => {
     try {
