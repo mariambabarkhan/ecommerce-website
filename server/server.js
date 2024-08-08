@@ -1,11 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 app.use(cors());
+app.use(express.json()); 
 
-mongoose.connect('mongodb://127.0.0.1:27017/blissfulDB')
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log('Connected to MongoDB successfully');
     })
@@ -21,18 +26,31 @@ const productSchema = new mongoose.Schema({
     sale: Boolean,
     oldPrice: String,
     description: String,
-    size: String
+    size: String,
+    categories: [String] 
 });
 
 const Product = mongoose.model('Product', productSchema);
 
 app.get('/', (req, res) => {
-    res.send('Server is running, shukkar');
+    res.send('Server is running');
 });
 
 app.get('/collections/all', async (req, res) => {
     try {
         const products = await Product.find();
+        res.json(products);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+app.get('/collections/:category', async (req, res) => {
+    try {
+        const category = req.params.category;
+        const products = await Product.find({
+            categories: { $in: [category] }
+        });
         res.json(products);
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -51,15 +69,42 @@ app.get('/collections/all/:id', async (req, res) => {
     }
 });
 
-app.get('/products/vitamin-c', async (req, res) => {
-    try {
-        const product = await Product.findOne({ name: 'Brightening Serum - Vitamin C' }); // Adjust the query to match your product
-        if (!product) {
-            return res.status(404).json({ message: 'Product not found' });
+app.post('/contact', async (req, res) => {
+    const { name, email, phone, message } = req.body;
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
         }
-        res.json(product);
+    });
+
+    const mailOptions = {
+        from: `${email}`,
+        to: process.env.EMAIL_USER,
+        subject: 'Contact Form Submission',
+        text: `
+            Name: ${name}
+            Email: ${email}
+            Phone: ${phone}
+            Message: ${message}
+        `
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        const filePath = path.join(__dirname, 'CustomerCare.txt');
+        const data = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}\n\n`;
+        fs.appendFile(filePath, data, (err) => {
+            if (err) {
+                console.error('Error saving contact form data:', err);
+            }
+        });
+        res.status(200).json({ message: 'Contact form submitted successfully' });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        console.error('Error sending email:', err);
+        res.status(500).json({ message: 'Error submitting contact form' });
     }
 });
 

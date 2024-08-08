@@ -1,0 +1,20 @@
+Name: mariam
+Email: mariam@seecs.com
+Phone: 123-456-789
+Message: test: contact form submission to email and backend
+
+Name: TEST
+Email: test@yahoo.com
+Phone: 387919
+Message: test
+
+Name: 
+Email: 
+Phone: 
+Message: 
+
+Name: m
+Email: johnny@john.com
+Phone: 123456788
+Message: im john
+
