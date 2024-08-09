@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 
 const CheckoutDetails = () => {
     const { cart } = useCart();
@@ -15,9 +16,10 @@ const CheckoutDetails = () => {
         company: '',
         address: ''
     });
-    const [paymentMethod, setPaymentMethod] = useState('card');
+    const [paymentMethod, setPaymentMethod] = useState('cod');
     const [billingAddress, setBillingAddress] = useState('same');
     const [errors, setErrors] = useState({});
+    const [submitStatus, setSubmitStatus] = useState({ message: '', type: '' });
 
     const validateForm = () => {
         const newErrors = {};
@@ -31,9 +33,25 @@ const CheckoutDetails = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleNavigation = () => {
+    useEffect(() => {
+        if (cart.length === 0) {
+            navigate('/cart');
+        }
+    }, [cart]);
+
+    const handleOrderSubmit = () => {
+        const orderData = {
+            orderNumber: 'ORD123456',
+            orderDate: new Date().toLocaleDateString(),
+            deliveryDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toLocaleDateString(), // 5 days from now
+            items: cart.map(item => ({ name: item.name, price: item.price, quantity: item.quantity })),
+            totalAmount: calculateTotal(),
+            userName: `${deliveryInfo.firstName} ${deliveryInfo.lastName}`,
+            userEmail: contactInfo.email
+        };
+
         if (validateForm()) {
-            navigate('/order-confirmation');
+            navigate('/order-confirmation', { state: { orderData } });
         }
     };
 
@@ -42,7 +60,38 @@ const CheckoutDetails = () => {
     };
 
     const calculateTotal = () => {
-        return cart.reduce((total, item) => total + (parseFloat(item.price.slice(3).replace(/,/g, '')) * item.quantity), 0) + 200;
+        return subTotal() + 200; // 200 is the flat shipping cost
+    };
+
+    const handleCheckboxChange = (e) => {
+        const checked = e.target.checked;
+        setContactInfo((prev) => ({ ...prev, subscribe: checked }));
+        if (checked) {
+            handleSubscribe(e);
+        }
+    };
+
+    const validateEmailFormat = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const handleSubscribe = async (e) => {
+        e.preventDefault();
+        if (!validateEmailFormat(contactInfo.email)) {
+            setErrors((prevErrors) => ({ ...prevErrors, email: 'Invalid email format' }));
+            return;
+        }
+
+        try {
+            const response = await axios.post('http://localhost:5000/api/subscribe', { email: contactInfo.email });
+            setSubmitStatus({ message: response.data.message, type: 'success' });
+            console.log(response.data.message);
+            setContactInfo({ ...contactInfo, subscribe: true });
+        } catch (error) {
+            setSubmitStatus({ message: 'Failed to subscribe. Please try again.', type: 'error' });
+            console.log(error);
+        }
     };
 
     return (
@@ -55,7 +104,7 @@ const CheckoutDetails = () => {
             <h1 className="text-4xl font-semibold mb-8 text-gray-800">Checkout</h1>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-2">
-                                     <motion.div
+                    <motion.div
                         className="mb-8 p-6 bg-white rounded-lg shadow"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -74,7 +123,7 @@ const CheckoutDetails = () => {
                             <input
                                 type="checkbox"
                                 checked={contactInfo.subscribe}
-                                onChange={(e) => setContactInfo({ ...contactInfo, subscribe: e.target.checked })}
+                                onChange={handleCheckboxChange}
                                 className="h-5 w-5"
                             />
                             <span>Email me with news and offers</span>
@@ -104,7 +153,6 @@ const CheckoutDetails = () => {
                                 onChange={(e) => setDeliveryInfo({ ...deliveryInfo, firstName: e.target.value })}
                                 className={`input-field w-full p-3 border rounded-lg focus:outline-none ${errors.firstName ? 'border-red-500' : 'border-gray-300'} focus:border-gray-500`}
                             />
-                            {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName}</p>}
                             <input
                                 type="text"
                                 placeholder="Last name"
@@ -112,7 +160,6 @@ const CheckoutDetails = () => {
                                 onChange={(e) => setDeliveryInfo({ ...deliveryInfo, lastName: e.target.value })}
                                 className={`input-field w-full p-3 border rounded-lg focus:outline-none ${errors.lastName ? 'border-red-500' : 'border-gray-300'} focus:border-gray-500`}
                             />
-                            {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName}</p>}
                         </div>
                         <input
                             type="text"
@@ -138,21 +185,9 @@ const CheckoutDetails = () => {
                         transition={{ duration: 0.5, delay: 0.6 }}
                     >
                         <h2 className="text-2xl font-medium mb-4 text-gray-700">Payment</h2>
-                        <label className="flex items-center space-x-2 mb-4 text-gray-600">
-                            <input
-                                type="radio"
-                                name="payment"
-                                value="card"
-                                checked={paymentMethod === 'card'}
-                                onChange={(e) => setPaymentMethod(e.target.value)}
-                                className="h-5 w-5"
-                            />
-                            <span>Safepay Checkout - pay with debit & credit cards</span>
-                        </label>
                         <label className="flex items-center space-x-2 text-gray-600">
                             <input
                                 type="radio"
-                                name="payment"
                                 value="cod"
                                 checked={paymentMethod === 'cod'}
                                 onChange={(e) => setPaymentMethod(e.target.value)}
@@ -163,27 +198,25 @@ const CheckoutDetails = () => {
                     </motion.div>
 
                     <motion.div
-                        className="mb-8 p-6 bg-white rounded-lg shadow"
+                        className="p-6 bg-white rounded-lg shadow"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.8 }}
                     >
                         <h2 className="text-2xl font-medium mb-4 text-gray-700">Billing Address</h2>
-                        <label className="flex items-center space-x-2 mb-4 text-gray-600">
+                        <label className="flex items-center space-x-2 text-gray-600 mb-4">
                             <input
                                 type="radio"
-                                name="billing"
                                 value="same"
                                 checked={billingAddress === 'same'}
                                 onChange={(e) => setBillingAddress(e.target.value)}
                                 className="h-5 w-5"
                             />
-                            <span>Same as shipping address</span>
+                            <span>Same as delivery address</span>
                         </label>
                         <label className="flex items-center space-x-2 text-gray-600">
                             <input
                                 type="radio"
-                                name="billing"
                                 value="different"
                                 checked={billingAddress === 'different'}
                                 onChange={(e) => setBillingAddress(e.target.value)}
@@ -192,60 +225,56 @@ const CheckoutDetails = () => {
                             <span>Use a different billing address</span>
                         </label>
                     </motion.div>
-
-                    {paymentMethod === "card" ? (
-                        <motion.button
-                            onClick={handleNavigation}
-                            className="btn-primary w-full py-3 mt-6 text-white bg-cartBadge hover:bg-customPurple rounded-lg shadow transition duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Pay now
-                        </motion.button>
-                    ) : (
-                        <motion.button
-                            onClick={handleNavigation}
-                            className="btn-primary w-full py-3 mt-6 text-white bg-cartBadge hover:bg-customPurple rounded-lg shadow transition duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Complete Order
-                        </motion.button>
-                    )}
-
                 </div>
 
                 <motion.div
-                    className="order-summary p-6 bg-white rounded-lg shadow-lg h-fit"
+                    className="order-summary p-6 h-fit w-fit bg-white rounded-lg shadow"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 1 }}
+                    transition={{ duration: 0.5, delay: 1.0 }}
                 >
-                    <h2 className="text-2xl font-medium mb-4 text-gray-700">Order Summary</h2>
-                    {cart.map((item) => (
-                        <div key={item._id} className="flex items-center mb-4">
-                            <img src={item.image} alt={item.name} className="w-16 h-16 object-cover mr-4 rounded-lg shadow" />
-                            <div className="flex-1">
-                                <h3 className="text-lg font-semibold text-gray-800">{item.name}</h3>
-                                <p className="text-gray-600">Qty: {item.quantity}</p>
-                                <p className="text-gray-800 text-lg">{item.price}</p>
-                            </div>
-                        </div>
-                    ))}
-                    <div className="flex justify-between mt-4 text-gray-800">
-                        <span>Subtotal:</span>
-                        <span>{subTotal()}</span>
+                    <h2 className="text-2xl font-medium mb-6 text-gray-700">Order Summary</h2>
+                    <ul>
+                        {cart.map((item) => (
+                            <li key={item.id} className="flex items-center justify-between mb-6">
+                                <div className="relative mr-4">
+                                    <img
+                                        src={item.image}
+                                        alt={item.name}
+                                        className="w-16 h-16 object-cover rounded-lg shadow"
+                                    />
+                                    <span className="absolute top-0 left-0 bg-cartBadge text-white text-xs font-semibold rounded-full px-2 py-0.5 transform -translate-x-1/2 -translate-y-1/2">
+                                        {item.quantity}
+                                    </span>
+                                </div>
+                                <div className="flex-1">
+                                    <span className="text-gray-700">{item.name}</span>
+                                </div>
+                                <span className="text-gray-700 ml-6">{item.price}</span>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="flex justify-between text-lg font-medium mb-6">
+                        <span>Subtotal</span>
+                        <span className='font-normal'>{subTotal().toLocaleString('en-US', { style: 'currency', currency: 'PKR' })}</span>
                     </div>
-                    <div className="flex justify-between mt-2 text-gray-800">
-                        <span>Shipping:</span>
-                        <span>200</span>
+                    <div className="flex justify-between text-lg font-medium mb-6">
+                        <span>Shipping</span>
+                        <span className='font-normal'>PKR 200.00</span>
                     </div>
-                    <div className="flex justify-between mt-4 font-semibold text-gray-800 text-lg">
-                        <span>Total:</span>
-                        <span>{calculateTotal()}</span>
+                    <div className="flex justify-between text-xl font-semibold">
+                        <span>Total</span>
+                        <span className='font-normal'>{calculateTotal().toLocaleString('en-US', { style: 'currency', currency: 'PKR' })}</span>
                     </div>
+                    <button
+                        onClick={handleOrderSubmit}
+                        className="w-full mt-6 bg-cartBadge text-white py-3 rounded-lg hover:bg-customPurple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700"
+                    >
+                        Confirm Order
+                    </button>
+                    {errors.cart && <p className="text-red-500 text-sm mt-4">{errors.cart}</p>}
                 </motion.div>
-                {errors.cart && <p className="text-red-500 text-sm">{errors.cart}</p>}
+
             </div>
         </motion.div>
     );

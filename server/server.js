@@ -5,11 +5,13 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 const path = require('path');
+const emailValidator = require('email-validator');
+const dns = require('dns');
 const Product = require('./models/Product');
 
 const app = express();
 app.use(cors());
-app.use(express.json()); 
+app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
@@ -23,24 +25,54 @@ app.get('/', (req, res) => {
     res.send('Server is running');
 });
 
-app.post('/api/subscribe', (req, res) => {
-    const email = req.body.email;
-    const filePath = path.join(__dirname, 'Subscribers.txt');
+const validateDomain = (email) => {
+    return new Promise((resolve, reject) => {
+        const domain = email.split('@')[1];
+        dns.resolveMx(domain, (err, addresses) => {
+            if (err || addresses.length === 0) {
+                reject('Invalid email domain');
+            } else {
+                resolve(true);
+            }
+        });
+    });
+};
 
-    if (!email) {
-        return res.status(400).json({ error: 'Email is required' });
+app.post('/api/subscribe', async (req, res) => {
+    const { email } = req.body;
+
+    if (!emailValidator.validate(email)) {
+        return res.status(400).json({ message: 'Invalid email format' });
     }
 
-    fs.appendFile(filePath, `${email}\n`, (err) => {
-        if (err) {
-            return res.status(500).json({ error: 'Failed to save the email' });
-        }
-        return res.status(200).json({ message: 'Subscription successful' });
-    });
+    try {
+        await validateDomain(email);
+        const filePath = path.join(__dirname, 'Subscribers.txt');
+        fs.appendFile(filePath, `${email}\n`, (err) => {
+            if (err) {
+                return res.status(500).json({ error: 'Failed to save the email' });
+            }
+            return res.status(200).json({ message: 'Subscription successful' });
+        });
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
+});
+
+app.get('/api/search/:term', async (req, res) => {
+    const query = req.params.term;
+    try {
+        const results = await Product.find({
+            name: { $regex: query, $options: 'i' },
+        }).limit(10);
+        res.json(results);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 app.get('/collections/:category', async (req, res) => {
-    if(req.params.category === 'all') {
+    if (req.params.category === 'all') {
         try {
             const products = await Product.find();
             res.json(products);
@@ -49,16 +81,16 @@ app.get('/collections/:category', async (req, res) => {
         }
     }
     else {
-    try {
-        const category = req.params.category;
-        const products = await Product.find({
-            categories: { $regex: category, $options: 'i' }
-        });
-        res.json(products);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    } 
-}
+        try {
+            const category = req.params.category;
+            const products = await Product.find({
+                categories: { $regex: category, $options: 'i' }
+            });
+            res.json(products);
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+    }
 });
 
 app.get('/collections/all/:id', async (req, res) => {

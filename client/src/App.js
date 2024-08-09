@@ -12,8 +12,6 @@ import Navbar from './components/Navbar';
 import ProductDetails from './components/ProductDetails';
 import CategoryPage from './pages/CategoryPage';
 import Checkout from './pages/Checkout';
-import OrderConfirmation from './pages/OrderConfirmation';
-
 
 function App() {
   return (
@@ -28,7 +26,6 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/order-confirmation" element={<OrderConfirmation />} />
             <Route path="/collections" element={<Collections />} />
             <Route path="/collections/all" element={<AllCollections />} />
             <Route path="/collections/:category" element={<CategoryPage />} />

@@ -30,9 +30,17 @@ const HomeFooter = () => {
   const { ref: userInfoRef, inView: userInfoInView } = useInView({ triggerOnce: false });
   const { ref: contactUsRef, inView: contactUsInView } = useInView({ triggerOnce: false });
 
+  const validateEmailFormat = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubscribe = async (e) => {
     e.preventDefault();
-
+    if (!validateEmailFormat(email)) {
+      setSubmitStatus({ message: 'Invalid Email. Please try again.', type: 'error' });
+      return;
+    }
     try {
       const response = await axios.post('http://localhost:5000/api/subscribe', { email });
       setSubmitStatus({ message: response.data.message, type: 'success' });
