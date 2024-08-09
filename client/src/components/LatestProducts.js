@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 
 const LatestProducts = () => {
     const [hovered, setHovered] = useState(null);
@@ -12,42 +13,42 @@ const LatestProducts = () => {
 
     const products = [
         {
-            id: 1,
+            id: '66b5ce410646c46b449a0336',
             image: 'https://shopblissfulbeauty.com/cdn/shop/files/serum2.jpg?v=1700379942&width=720',
             hoverImage: 'https://shopblissfulbeauty.com/cdn/shop/files/DSC01500.jpg?v=1700379954&width=720',
             name: 'Hyalaronic Acid',
             price: 'Rs.2,200.00 PKR'
         },
         {
-            id: 2,
+            id: '66b5ce410646c46b449a0335',
             image: 'https://shopblissfulbeauty.com/cdn/shop/files/Serum4.jpg?v=1700379826&width=720',
             hoverImage: 'https://shopblissfulbeauty.com/cdn/shop/files/DSC01311.jpg?v=1700379914&width=720',
             name: 'Brightening Serum - Vitamin C',
             price: 'Rs.2,200.00 PKR'
         },
         {
-            id: 3,
+            id: '66b5ce410646c46b449a033e',
             image: 'https://shopblissfulbeauty.com/cdn/shop/files/Serium1.jpg?v=1700380125&width=720',
             hoverImage: 'https://shopblissfulbeauty.com/cdn/shop/files/DSC01343.jpg?v=1700380125&width=720',
             name: 'Retinol',
             price: 'Rs.2,800.00 PKR'
         },
         {
-            id: 4,
+            id: '66b5ce410646c46b449a0333',
             image: 'https://shopblissfulbeauty.com/cdn/shop/files/IMG_0214.jpg?v=1700379107&width=720',
             hoverImage: 'https://shopblissfulbeauty.com/cdn/shop/files/DSC01591.jpg?v=1700379107&width=720',
             name: 'Barrier Repair Moisturizer',
             price: 'Rs.1,200.00 PKR'
         },
         {
-            id: 5,
+            id: '66b5ce410646c46b449a0338',
             image: 'https://shopblissfulbeauty.com/cdn/shop/files/IMG_0321-Enhanced-NR.jpg?v=1700379575&width=720',
             hoverImage: 'https://shopblissfulbeauty.com/cdn/shop/files/DSC01614.jpg?v=1700379575&width=720',
             name: 'Hydrating Cleanser',
             price: 'Rs.1,550.00 PKR'
         },
         {
-            id: 6,
+            id: '66b5ce410646c46b449a0342',
             image: 'https://shopblissfulbeauty.com/cdn/shop/files/IMG_2457.jpg?v=1715335725&width=720',
             hoverImage: 'https://shopblissfulbeauty.com/cdn/shop/files/DSC07337.jpg?v=1715335725&width=720',
             name: 'Tinted Sunscreen SPF 60',
@@ -82,6 +83,7 @@ const LatestProducts = () => {
             <h1 className="text-4xl font-heading text-center mb-12">Latest Products</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                 {products.map((product, index) => (
+                    <Link to={`/product/${product.id}`}>
                     <motion.div
                         key={product.id}
                         className="bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer"
@@ -102,9 +104,11 @@ const LatestProducts = () => {
                             <p className="text-md font-body text-gray-700">{product.price}</p>
                         </div>
                     </motion.div>
+                    </Link>
                 ))}
             </div>
         </motion.div>
+        
     );
 }
 
