@@ -35,7 +35,7 @@
   },
   "scripts": {
     "client": "cd client && npm start",
-    "server": "nodemon server/server.js",
+    "server": "cd server && nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {

@@ -31,7 +31,7 @@ const CartPopUp = () => {
             initial={{ opacity: 1 }}
             animate={controls}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="absolute right-10 mt-2 w-72 bg-white border border-gray-200 shadow-lg rounded-lg z-20 p-4"
+            className="fixed right-10 top-2 w-72 bg-white border border-gray-200 shadow-lg rounded-lg z-20 p-4"
         >
             <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">Item added to your cart</span>
