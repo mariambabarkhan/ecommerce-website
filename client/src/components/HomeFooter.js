@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaFacebookF, FaInstagram, FaArrowRight } from 'react-icons/fa';
 import logo from '../images/favicon.ico';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const HomeFooter = () => {
+  const [email, setEmail] = useState('');
+  const [submitStatus, setSubmitStatus] = useState(null);
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 }
@@ -26,6 +30,18 @@ const HomeFooter = () => {
   const { ref: userInfoRef, inView: userInfoInView } = useInView({ triggerOnce: false });
   const { ref: contactUsRef, inView: contactUsInView } = useInView({ triggerOnce: false });
 
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/subscribe', { email });
+      setSubmitStatus({ message: response.data.message, type: 'success' });
+      setEmail('');
+    } catch (error) {
+      setSubmitStatus({ message: 'Failed to subscribe. Please try again.', type: 'error' });
+    }
+  };
+
   return (
     <motion.footer
       initial="hidden"
@@ -34,7 +50,6 @@ const HomeFooter = () => {
       className="bg-transparent text-black p-10"
     >
       <div className="container mx-auto">
-        {/* Subscribe Section */}
         <motion.div
           ref={subscribeRef}
           variants={fadeInUp}
@@ -43,20 +58,27 @@ const HomeFooter = () => {
           className="flex flex-col items-center justify-center mb-8"
         >
           <h3 className="text-3xl font-semibold font-body mb-4">Subscribe to our emails</h3>
-          <div className="flex items-center">
+          <form onSubmit={handleSubscribe} className="flex items-center">
             <input
               type="email"
               placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
               className="bg-white border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-1 focus:ring-black md:mr-2"
             />
-            <button className="bg-black hover:bg-gray-800 text-white font-semibold rounded-lg py-2 px-4 flex items-center">
+            <button type="submit" className="bg-black hover:bg-gray-800 text-white font-semibold rounded-lg py-2 px-4 flex items-center">
               <FaArrowRight size={16} />
             </button>
-          </div>
+          </form>
+          {submitStatus && (
+            <p className={`mt-4 text-sm ${submitStatus.type === 'success' ? 'text-green-600' : 'text-red-600'}`}>
+              {submitStatus.message}
+            </p>
+          )}
         </motion.div>
 
         <div className="flex flex-wrap md:flex-nowrap items-start justify-between">
-          {/* Logo Section */}
           <motion.div
             ref={logoRef}
             variants={fadeInUp}
@@ -67,7 +89,6 @@ const HomeFooter = () => {
             <img src={logo} alt="Logo" className="w-52 mr-72" />
           </motion.div>
 
-          {/* Quick Links Section */}
           <motion.div
             ref={quickLinksRef}
             variants={fadeInUp}
@@ -84,7 +105,6 @@ const HomeFooter = () => {
             </ul>
           </motion.div>
 
-          {/* User Info Section */}
           <motion.div
             ref={userInfoRef}
             variants={fadeInUp}
@@ -102,7 +122,6 @@ const HomeFooter = () => {
             </ul>
           </motion.div>
 
-          {/* Contact Us & Working Days Section */}
           <motion.div
             ref={contactUsRef}
             variants={fadeInUp}
@@ -119,7 +138,6 @@ const HomeFooter = () => {
         </div>
       </div>
 
-      {/* Social Media & Copyright */}
       <motion.div
         variants={fadeInUp}
         animate={contactUsInView ? "visible" : "hidden"}

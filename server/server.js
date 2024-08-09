@@ -23,6 +23,22 @@ app.get('/', (req, res) => {
     res.send('Server is running');
 });
 
+app.post('/api/subscribe', (req, res) => {
+    const email = req.body.email;
+    const filePath = path.join(__dirname, 'Subscribers.txt');
+
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required' });
+    }
+
+    fs.appendFile(filePath, `${email}\n`, (err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Failed to save the email' });
+        }
+        return res.status(200).json({ message: 'Subscription successful' });
+    });
+});
+
 app.get('/collections/:category', async (req, res) => {
     if(req.params.category === 'all') {
         try {
