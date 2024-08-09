@@ -5,6 +5,7 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 const path = require('path');
+const Product = require('./models/Product');
 
 const app = express();
 app.use(cors());
@@ -18,24 +19,9 @@ mongoose.connect(process.env.MONGODB_URI)
         console.error('Failed to connect to MongoDB:', err.message);
     });
 
-const productSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    hoverImage: String,
-    price: String,
-    sale: Boolean,
-    oldPrice: String,
-    description: String,
-    size: String,
-    categories: [String] 
-});
-
-const Product = mongoose.model('Product', productSchema);
-
 app.get('/', (req, res) => {
     res.send('Server is running');
 });
-
 
 app.get('/collections/:category', async (req, res) => {
     if(req.params.category === 'all') {
@@ -50,7 +36,7 @@ app.get('/collections/:category', async (req, res) => {
     try {
         const category = req.params.category;
         const products = await Product.find({
-            categories: { $regex: category, $options: 'i' } // Case-insensitive search
+            categories: { $regex: category, $options: 'i' }
         });
         res.json(products);
     } catch (err) {
@@ -58,7 +44,6 @@ app.get('/collections/:category', async (req, res) => {
     } 
 }
 });
-
 
 app.get('/collections/all/:id', async (req, res) => {
     try {

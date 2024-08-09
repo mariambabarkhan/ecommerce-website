@@ -11,7 +11,7 @@
       "bundles",
       "dehydration & dryness",
       "breakouts & acne"
-    ],
+    ], "quantity": 100,
     "description": "Kickstart your morning with our AM Skincare Bundle, specifically tailored for those with dry, sensitive, and acne-prone skin. This comprehensive set provides everything you need for a nourishing start to the day, helping to soothe, hydrate, and protect your skin while addressing acne concerns gently. With a focus on barrier repair and moisture retention, this bundle ensures a smooth, radiant complexion throughout the day. Included: Barrier Repair Cleanser, Barrier Repair Moisturiser, Tinted Sunscreen, Hyaluronic Acid Serum, Vitamin C Serum, Thermal Spring Water Spray."
   },
   {
@@ -25,7 +25,7 @@
     "categories": [
       "bundles",
       "texture, pores & oily-skin"
-    ],
+    ], "quantity": 100,
     "description": "Perfect your morning skincare routine with our AM Skincare Bundle designed specifically for oily and combination skin types. This selection aims to balance, hydrate, and protect your skin, ensuring it stays refreshed, clear, and comfortably matte throughout the day. From deep cleansing to sun protection with a touch of color, this bundle has everything you need to maintain a healthy and radiant complexion. Included: Hydrating Cleanser, Barrier Repair Moisturiser, Tinted Sunscreen, Hyaluronic Acid Serum, Thermal Spring Water Spray."
   },
   {
@@ -39,7 +39,7 @@
     "categories": [
       "bundles",
       "healthy aging"
-    ],
+    ], "quantity": 100,
     "description": "Unveil a youthful and revitalized complexion with our Anti-Aging Bundle, meticulously designed to combat the signs of aging. This powerful combination of skincare essentials works synergistically to reduce wrinkles, enhance firmness, and protect your skin from environmental damage. Included: Vitamin C Serum, Retinol Serum, Multi Peptide Centella Serum, Sunscreen."
   },
   {
@@ -55,7 +55,7 @@
       "dehydration & dryness",
       "breakouts & acne",
       "dark spot & discoloration"
-    ],
+    ], "quantity": 100,
     "description": "Experience the ultimate skin revival with our Barrier Repair Bundle. Designed to strengthen, hydrate, and restore your skin's natural defenses, this expertly curated set addresses the needs of sensitive and compromised skin barriers. Included: Barrier Repair Cleanser, Barrier Repair Moisturiser, Multi Peptide Centella Serum, Thermal Spring Water Spray."
   },
   {
@@ -71,7 +71,7 @@
       "dehydration & dryness",
       "breakouts & acne",
       "dark spot & discoloration"
-    ],
+    ], "quantity": 100,
     "description": "Introducing our new Barrier Repair Cleanser. Your skin barriers best friend. Infused with a barrier boosting blend of Centella Asciatica extract, Niacinamide, Ceramides, Hyaluronic Acid, Vitamin E and Aloe extract. Made to cleanse and hydrate your skin while protecting and strengthening your skins protective barrier. Perfect for dry, extremely dry, sensitive and acne prone skin."
   },
   {
@@ -87,7 +87,7 @@
       "dehydration & dryness",
       "breakouts & acne",
       "dark spot & discoloration"
-    ],
+    ], "quantity": 100,
     "description": "Our barrier repair moisturiser is a lightweight moisturiser that helps hydrate the skin and restore its natural protective barrier. Formulated with ceramides, hyaluronic acid, vitamin e and aloe vera extract that work together to lock in moisture and improve your barrier health. Leaves skin feeling hydrated and radiant."
   },
   {
@@ -101,7 +101,7 @@
     "categories": [
       "bundles",
       "dullness & uneven tone"
-    ],
+    ], "quantity": 100,
     "description": "Illuminate your skin with our Bright and Glowing Skin Bundle, expertly crafted to enhance your skin's natural radiance while providing essential protection. This streamlined duo includes our high-performance Vitamin C Serum and a protective Sunscreen, making it perfect for anyone looking to achieve a luminous, even-toned complexion with minimal effort."
   },
   {
@@ -118,7 +118,7 @@
       "dullness & uneven tone",
       "dark spot & discoloration",
       "breakouts & acne"
-    ],
+    ], "quantity": 100,
     "description": "Brighten dark spots and uneven skin tone with our 15% vitamin c, a brightening serum that effectively fights off free radicals, reduces inflammation and evens out skin tone. Contains a stable formulation of ascorbic acid, ferulic acid, vitamin E and sorbitol. Our vitamin c is silky, non sticky and quick absorbing making it perfect for all skin types."
   },
   {
@@ -135,6 +135,7 @@
       "aging",
       "dark spot & discoloration"
     ],
+    "quantity": 100,
     "description": "Our lightweight oil free hyaluronic acid contains a blend of hyaluronic acid, ceramides, vitamin e and aloe vera extract which deeply hydrates dry and dehydrated skin and reduces the appearance of fine lines and wrinkles giving you healthy, radiant, bouncy skin. This lightweight formula works great under makeup for skin prep too!"
   },
   {
@@ -149,6 +150,7 @@
       "bundles",
       "dehydration & dryness"
     ],
+    "quantity": 100,
     "description": "Drench your skin in deep hydration and achieve a plumper, smoother complexion with our Hydrated and Plump Skin Bundle. Specially formulated for those who desire a moisturized, bouncy texture, this bundle combines the most effective hydrating and rejuvenating products. Included: Barrier Repair Cleanser, Barrier Repair Moisturiser, Multi Peptide Centella Serum, Hyaluronic Acid Serum."
   },
   {
@@ -163,6 +165,7 @@
       "cleansers",
       "dehydration & dryness"
     ],
+    "quantity": 100,
     "description": "Our hydrating cleanser removes makeup, dirt and debris without disrupting the skins natural protective barrier or stripping the skin of its natural oils. Featuring hyaluronic acid, ceramides, aloe vera extract and vitamin e that work together to lock in moisture."
   },
   {
@@ -178,6 +181,7 @@
       "dehydration & dryness",
       "breakouts & acne"
     ],
+    "quantity": 100,
     "description": "The Mega Bundle is an all-encompassing skincare solution specifically designed for those with dry, sensitive, and acne-prone skin. This extensive collection of products is tailored to hydrate, soothe, protect, and rejuvenate your skin, addressing multiple concerns simultaneously. Included: Barrier Repair Cleanser, Barrier Repair Moisturizer, Tinted Sunscreen SPF 60, Brightening Serum - Vitamin C, Multi Peptide Centella Serum, Retinol, Hyaluronic Acid Serum, Thermal Spring Water Spray."
   },
   {
@@ -192,6 +196,7 @@
       "bundles",
       "texture, pores & oily-skin"
     ],
+    "quantity": 100,
     "description": "Embrace a comprehensive skincare regimen with our Mega Bundle, expertly tailored for those with oily and combination skin. This robust collection of products is designed to cleanse, hydrate, protect, and rejuvenate your skin while balancing oil production and improving overall skin texture. Included: Hydrating Cleanser, Barrier Repair Cleanser, Tinted Sunscreen SPF 60, Brightening Serum - Vitamin C, Multi Peptide Centella Serum, Retinol, Hyaluronic Acid Serum, Thermal Spring Water Spray."
   },
   {
@@ -212,6 +217,7 @@
       "texture, pores & oily-skin"
 
     ],
+    "quantity": 100,
     "description": "Introducing our new fast absorbing, lightweight multi peptide serum infused with Centella Asiatica extract that not only defies signs of aging but also soothes and calms irritated skin and reduces redness and inflammation. With the power of tri peptides that give you the ultimate anti aging recipe and provide intense moisture and hydration."
   },
   {
@@ -227,6 +233,7 @@
       "dehydration & dryness",
       "breakouts & acne"
     ],
+    "quantity": 100,
     "description": "This PM Skincare Bundle is curated for those with dry, sensitive, and acne-prone skin, focusing on gentle cleansing, intensive moisturization, and targeted acne treatment. It nurtures the skin while addressing sensitivity and hydration needs, allowing you to achieve a calmer, more radiant complexion by morning. Included: Barrier Repair Cleanser, Barrier Repair Moisturizer, Retinol Serum, Multi Peptide Centella Serum."
   },
   {
@@ -241,6 +248,7 @@
       "bundles",
       "texture, pores & oily-skin"
     ],
+    "quantity": 100,
     "description": "Tailored for oily and combination skin, this PM Skincare Bundle is designed to cleanse, treat, and nourish your skin overnight. With products that balance oil production, reduce breakouts, and enhance skin barrier health, this bundle ensures you wake up to a clearer, more balanced complexion. Included: Hydrating Cleanser, Barrier Repair Moisturizer, Retinol Serum, Multi Peptide Centella Serum."
   },
   {
@@ -258,6 +266,7 @@
       "dullness & uneven tone",
       "texture, pores & oily-skin"
     ],
+    "quantity": 100,
     "description": "Our potent yet gentle retinol is perfect for beginners and advanced users. This advanced formula contains retinol with squalene oil and vitamin E to limit sensitivity and irritation. Benefits: Reduces fine lines, wrinkles, texture and uneven skin tone, stimulates collagen production, regenerates skin cells, reverses sun damage."
   },
   {
@@ -272,6 +281,7 @@
       "bundles",
       "serums"
     ],
+    "quantity": 100,
     "description": "Elevate your skincare routine with our Super Serum Bundle, a powerful collection of high-performance serums each designed to target specific skin concerns. This bundle combines the brightening, hydrating, rejuvenating, and healing properties of our top serums, making it an essential toolkit for anyone looking to enhance their skin's overall health and appearance. Included: Vitamin C Serum, Hyaluronic Acid Serum, Retinol Serum, Multi Peptide Centella Serum."
   },
   {
@@ -286,6 +296,7 @@
       "bundles",
       "breakouts & acne"
     ],
+    "quantity": 100,
     "description": "Introducing our Teenage Skincare Bundle, specially designed to meet the unique skincare needs of teenagers. This simple yet effective trio of products focuses on gentle cleansing, essential hydration, and daily sun protection, providing a solid foundation for a healthy skincare routine. Included: Hydrating Cleanser, Barrier Repair Moisturizer, Tinted Sunscreen."
   },
   {
@@ -299,6 +310,7 @@
     "categories": [
       "dehydration & dryness"
     ],
+    "quantity": 100,
     "description": "FOR THE FIRST TIME IN PAKISTAN. Enriched with minerals to soothe and refresh your skin. BENEFITS: Gently refreshes, rebalances and calms the skin. Rich in selenium with anti oxidant benefits. Neutral pH reduces sensitivity and restores skin balance. Can be used on face and body. Use as a hydrating toner or a mist to refresh your skin or to soothe irritated skin."
   },
   {
@@ -313,6 +325,7 @@
       "sunscreens",
       "sun-protection"
     ],
+    "quantity": 100,
     "description": "Protect your skin while getting a healthy glow without any white cast. Our tinted sunscreen is non greasy, suitable for sensitive skin and seamlessly blends into all skin types. Apply two finger lengths onto face and neck at least 15 minutes before sun exposure. Reapply every 2 hours and after prolonged water exposure like swimming. Should be applied daily, even on cloudy days.",
     "howToUse": "Apply two finger lengths onto face and neck at least 15 minutes before sun exposure. Reapply every 2 hours and after prolonged water exposure like swimming. Should be applied daily, even on cloudy days. Use as the last step of your skincare routine. Let your serums and other skincare products fully absorb before applying sunscreen.",
     "ingredients": "Deionized Water, Disodium EDTA, Glycerin, Ceteareth-20, xanthan Gum, Acrylates/ C10-30 Alkyl Acrylate Crosspolymer, Styrene/ Acrylates Copolymer, Acrylates/ Dimethicone Copolymer, Cyclopentasiloxane, Cetyl Alcohol, Octyl Methoxycinnamate, Homosalate, Avobenzone, Octyl Salicylate, Octocrylene, Benzophenone-4, Wheat Germ Oil (As Contained Natural Vitamin E), Ultra-Microfine Titanium Dioxide, Nogenol (As Contained Zinc), Alpha Arbutin, Sodium Ascorbyl Phosphate, Aloe Vera Extract, Triethanolamine, Butylated Hydroxytoluene, DMDM Hydantoin, Caprylyl Glycol, Phenoxyethanol, Iron Oxides (CI 77491, CI 77492, CI 77499)"
