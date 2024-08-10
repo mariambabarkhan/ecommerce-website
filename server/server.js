@@ -38,6 +38,27 @@ const validateDomain = (email) => {
     });
 };
 
+app.post('/api/place-order', async (req, res) => {
+    const { cart } = req.body;
+
+    try {
+        for (const item of cart) {
+            const product = await Product.findById(item.id);
+            if (product) {
+                product.quantity -= item.quantity;
+                await product.save();
+            } else {
+                return res.status(404).json({ message: `Product with ID ${item.id} not found` });
+            }
+        }
+
+        res.status(200).json({ message: 'Order placed successfully!' });
+    } catch (error) {
+        console.error('Error updating product quantities:', error);
+        res.status(500).json({ message: 'Failed to process order. Please try again.' });
+    }
+});
+
 app.post('/api/subscribe', async (req, res) => {
     const { email } = req.body;
 
