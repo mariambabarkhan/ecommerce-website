@@ -2,8 +2,9 @@ import React from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
-const CategoryCard = ({ children, delay }) => {
+const CategoryCard = ({ children, delay, linkto }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: false,  
@@ -31,7 +32,9 @@ const CategoryCard = ({ children, delay }) => {
       variants={variants}
       className="w-full md:w-1/2 lg:w-1/4 p-4"
     >
-      {children}
+      <Link to={linkto} className="block">
+        {children}
+      </Link>
     </motion.div>
   );
 };
@@ -63,9 +66,9 @@ const CategoryCards = () => {
   return (
     <div className="container mx-auto p-10">
       <h2 className="text-3xl font-heading text-center mb-8 tracking-wider mt-8">Shop By Category</h2>
-      <a href='/collections' className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center">
         {categories.map((category, index) => (
-          <CategoryCard key={category.title} delay={index * 0.3}>
+          <CategoryCard key={category.title} delay={index * 0.3} linkto={category.linkto}>
             <div className="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl group transition-shadow duration-300">
               <img
                 src={category.img}
@@ -73,18 +76,15 @@ const CategoryCards = () => {
                 className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
               />
               <div className="p-6 text-center">
-                <a
-                  href={category.linkto}
-                  className="text-xl font-semibold font-body mb-2 flex items-center justify-center text-black tracking-wider"
-                >
+                <span className="text-xl font-semibold font-body mb-2 flex items-center justify-center text-black tracking-wider">
                   {category.title}
                   <FiArrowRight className="ml-2 text-lg transition-transform duration-300 group-hover:scale-125" />
-                </a>
+                </span>
               </div>
             </div>
           </CategoryCard>
         ))}
-      </a>
+      </div>
     </div>
   );
 };

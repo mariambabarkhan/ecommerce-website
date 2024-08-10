@@ -66,10 +66,11 @@ const HomeFooter = () => {
           className="flex flex-col items-center justify-center mb-8"
         >
           <h3 className="text-3xl font-semibold font-body mb-4">Subscribe to our emails</h3>
-          <form onSubmit={handleSubscribe} className="flex items-center">
+          <form onSubmit={handleSubscribe}  className="flex items-center">
             <input
               type="email"
               placeholder="Email"
+              id="subscribe-email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -138,7 +139,11 @@ const HomeFooter = () => {
             className="flex-1 mt-4 md:mt-0"
           >
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <p className="mb-2"><h4 className='font-semibold'>Email: </h4><a href="mailto:blissfulbeautypakistan@gmail.com" className="hover:underline">blissfulbeautypakistan@gmail.com</a></p>
+            <div>
+              <p className="mb-2"></p>
+              <h4 className='font-semibold'>Email: </h4>
+              <a href="mailto:blissfulbeautypakistan@gmail.com" className="hover:underline">blissfulbeautypakistan@gmail.com</a>
+            </div>
             <h3 className="text-lg font-semibold mb-4">Working Days</h3>
             <p>Mon - Fri: 9 am to 5 pm</p>
             <p>Sat & Sun: Off</p>
