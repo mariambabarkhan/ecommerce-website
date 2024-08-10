@@ -41,7 +41,7 @@ const Navbar = () => {
     }, []);
 
     const handleSearchChange = async (e) => {
-    const query = e.target.value;
+        const query = e.target.value;
         setSearchQuery(query);
         if (query.trim() !== '') {
             try {
@@ -60,17 +60,13 @@ const Navbar = () => {
             setSearchResults([]);
         }
     };
-    
-    
     const handleSearchSubmit = async (e) => {
         e.preventDefault();
         if (searchQuery.trim() !== '') {
             try {
-                const response = await fetch(`/api/search?query=${searchQuery}`);
-                const data = await response.json();
-                setSearchResults(data);
+                window.location.href = `/search-results?query=${searchQuery}`;
             } catch (error) {
-                console.error('Error fetching search results:', error);
+                console.error('Error redirecting to search results:', error);
             }
         }
     };

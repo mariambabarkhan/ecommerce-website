@@ -12,6 +12,7 @@ import Navbar from './components/Navbar';
 import ProductDetails from './components/ProductDetails';
 import CategoryPage from './pages/CategoryPage';
 import Checkout from './pages/Checkout';
+import SearchResults from './pages/SearchResults';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/collections/all" element={<AllCollections />} />
             <Route path="/collections/:category" element={<CategoryPage />} />
             <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/search-results" element={<SearchResults />} />
           </Routes>
         </div>
       </Router>
