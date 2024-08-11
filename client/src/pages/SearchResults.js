@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import AddToCartBtn from '../components/AddToCartBtn';
@@ -118,7 +117,6 @@ const SearchResults = () => {
                     {isCartPopupVisible && <CartPopUp />}
                 </div>
             </motion.div>
-            <Footer />
         </>
     );
 };

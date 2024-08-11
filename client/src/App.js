@@ -13,6 +13,7 @@ import ProductDetails from './components/ProductDetails';
 import CategoryPage from './pages/CategoryPage';
 import Checkout from './pages/Checkout';
 import SearchResults from './pages/SearchResults';
+import HomeFooter from './components/HomeFooter';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/search" element={<SearchResults />} />
           </Routes>
+          <HomeFooter />
         </div>
       </Router>
     </CartProvider>

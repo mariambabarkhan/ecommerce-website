@@ -40,7 +40,6 @@ const validateDomain = (email) => {
 
 app.post('/api/place-order', async (req, res) => {
     const { cart } = req.body;
-
     try {
         for (const item of cart) {
             const product = await Product.findById(item.id);

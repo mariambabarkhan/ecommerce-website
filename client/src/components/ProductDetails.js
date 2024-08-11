@@ -7,7 +7,6 @@ import AddToCartBtn from './AddToCartBtn';
 import CartPopUp from './CartPopUp';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-import Footer from './Footer';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -88,7 +87,6 @@ const ProductDetails = () => {
 
             {isCartPopupVisible && <CartPopUp />}
         </motion.div>
-        <Footer />
         </>
     );
 };

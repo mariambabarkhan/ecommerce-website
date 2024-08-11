@@ -65,6 +65,7 @@ const ContactForm = () => {
                             value={formData.name}
                             onChange={handleChange}
                             placeholder="Name"
+                            autoComplete="name"
                             className="border border-gray-600 rounded-xl p-2 flex-1"
                         />
                         <input
@@ -73,6 +74,7 @@ const ContactForm = () => {
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="Email*"
+                            autoComplete="email"
                             className="border border-gray-600 rounded-xl p-2 flex-1"
                         />
                     </div>
@@ -82,6 +84,7 @@ const ContactForm = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="Phone Number"
+                        autoComplete="tel"
                         className="border border-gray-600 rounded-xl p-2 mb-6"
                     />
                     <textarea

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FiSearch, FiShoppingBag, FiChevronDown } from 'react-icons/fi';
 import logo from '../images/favicon.ico';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import SearchMenu from './SearchMenu';
 
@@ -12,7 +12,6 @@ const Navbar = () => {
     const [searchResults, setSearchResults] = useState([]);
     const menuRef = useRef(null);
     const { cartItemCount } = useCart();
-    const navigate = useNavigate();
 
     const toggleMenu = (menu) => {
         setOpenMenu(openMenu === menu ? null : menu);
@@ -37,34 +36,6 @@ const Navbar = () => {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
-
-    // const handleSearchChange = async (e) => {
-    //     const query = e.target.value;
-    //     setSearchQuery(query);
-    //     if (query.trim() !== '') {
-    //         try {
-    //             const response = await fetch(`http://localhost:5000/api/search?query=${encodeURIComponent(query)}`);
-    //             if (!response.ok) {
-    //                 console.error('Error fetching search results:', response.statusText);
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             const data = await response.json();
-    //             setSearchResults(data);
-    //         } catch (error) {
-    //             console.error('Error fetching search results:', error);
-    //         }
-    //     } else {
-    //         setSearchResults([]);
-    //     }
-    // };
-
-
-    // const handleSearchSubmit = (e) => {
-    //     e.preventDefault();
-    //     if (searchQuery.trim() !== '') {
-    //         navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
-    //     }
-    // };
 
     return (
         <nav className="bg-white border-gray-200 font-body z-10 relative">
@@ -149,7 +120,7 @@ const Navbar = () => {
                                 <Link to="/collections/breakouts" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Breakouts & Acne
                                 </Link>
-                                <Link to="/collections/oilyskin" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/oily-skin" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Texture, Pores & Oily Skin
                                 </Link>
                                 <Link to="/collections/discoloration" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
@@ -158,7 +129,7 @@ const Navbar = () => {
                                 <Link to="/collections/aging" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Healthy Aging
                                 </Link>
-                                <Link to="/collections/cleansing" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/cleansers" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Makeup Removing & Deep Cleansing
                                 </Link>
                                 <Link to="/collections/sun-protection" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">

@@ -2,8 +2,9 @@ import React from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
-const CollectionCard = ({ children, delay }) => {
+const CollectionCard = ({ children, delay, linkto }) => {
     const controls = useAnimation();
     const [ref, inView] = useInView({
         triggerOnce: false,
@@ -31,7 +32,9 @@ const CollectionCard = ({ children, delay }) => {
             variants={variants}
             className="w-full md:w-1/2 lg:w-1/3 p-5"
         >
-            {children}
+            <Link to={linkto} className="block">
+                {children}
+            </Link>
         </motion.div>
     );
 };
@@ -115,8 +118,7 @@ const CollectionCategories = () => {
             <h2 className="text-6xl font-bodyheading font-semibold self-start ml-6 mb-8 tracking-wide">Collections</h2>
             <div className="flex flex-wrap justify-center">
                 {collections.map((category, index) => (
-                    <CollectionCard key={category.title}>
-                        <a href={category.linkto}>
+                    <CollectionCard key={category.title} linkto={category.linkto}>
                         <div className="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl group transition-shadow duration-300 h-[450px]">
                             <img
                                 src={category.img}
@@ -124,16 +126,14 @@ const CollectionCategories = () => {
                                 className="w-full h-[80%] object-cover transition-transform duration-300 group-hover:scale-105"
                             />
                             <div className="p-6 text-center h-[20%] flex flex-col justify-center">
-                                <a
-                                    href={category.linkto}
+                                <span
                                     className="text-xl font-body font-semibold mb-2 flex items-center justify-center text-black tracking-wider"
                                 >
                                     {category.title}
                                     <FiArrowRight className="ml-2 text-lg transition-transform duration-300 group-hover:scale-125" />
-                                </a>
+                                </span>
                             </div>
                         </div>
-                        </a>
                     </CollectionCard>
                 ))}
             </div>

@@ -3,12 +3,14 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaFacebookF, FaInstagram, FaArrowRight } from 'react-icons/fa';
 import logo from '../images/favicon.ico';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const HomeFooter = () => {
   const [email, setEmail] = useState('');
   const [submitStatus, setSubmitStatus] = useState(null);
+
+  const location = useLocation();  // Get the current location
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
@@ -58,34 +60,36 @@ const HomeFooter = () => {
       className="bg-transparent text-black p-10"
     >
       <div className="container mx-auto">
-        <motion.div
-          ref={subscribeRef}
-          variants={fadeInUp}
-          animate={subscribeInView ? "visible" : "hidden"}
-          transition={{ duration: 1 }}
-          className="flex flex-col items-center justify-center mb-8"
-        >
-          <h3 className="text-3xl font-semibold font-body mb-4">Subscribe to our emails</h3>
-          <form onSubmit={handleSubscribe}  className="flex items-center">
-            <input
-              type="email"
-              placeholder="Email"
-              id="subscribe-email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="bg-white border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-1 focus:ring-black md:mr-2"
-            />
-            <button type="submit" className="bg-black hover:bg-gray-800 text-white font-semibold rounded-lg py-2 px-4 flex items-center">
-              <FaArrowRight size={16} />
-            </button>
-          </form>
-          {submitStatus && (
-            <p className={`mt-4 text-sm ${submitStatus.type === 'success' ? 'text-green-600' : 'text-red-600'}`}>
-              {submitStatus.message}
-            </p>
-          )}
-        </motion.div>
+        {(location.pathname === '/' || location.pathname === '/cart') && (
+          <motion.div
+            ref={subscribeRef}
+            variants={fadeInUp}
+            animate={subscribeInView ? "visible" : "hidden"}
+            transition={{ duration: 1 }}
+            className="flex flex-col items-center justify-center mb-8"
+          >
+            <h3 className="text-3xl font-semibold font-body mb-4">Subscribe to our emails</h3>
+            <form onSubmit={handleSubscribe} className="flex items-center">
+              <input
+                type="email"
+                placeholder="Email"
+                id="subscribe-email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="bg-white border border-gray-300 rounded-lg py-2 px-4 text-gray-700 focus:outline-none focus:ring-1 focus:ring-black md:mr-2"
+              />
+              <button type="submit" className="bg-black hover:bg-gray-800 text-white font-semibold rounded-lg py-2 px-4 flex items-center">
+                <FaArrowRight size={16} />
+              </button>
+            </form>
+            {submitStatus && (
+              <p className={`mt-4 text-sm ${submitStatus.type === 'success' ? 'text-green-600' : 'text-red-600'}`}>
+                {submitStatus.message}
+              </p>
+            )}
+          </motion.div>
+        )}
 
         <div className="flex flex-wrap md:flex-nowrap items-start justify-between">
           <motion.div

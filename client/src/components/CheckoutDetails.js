@@ -20,7 +20,8 @@ const CheckoutDetails = () => {
         firstName: '',
         lastName: '',
         company: '',
-        address: ''
+        address: '',
+        phone: '',
     });
 
     const validateForm = () => {
@@ -29,6 +30,7 @@ const CheckoutDetails = () => {
         if (!deliveryInfo.firstName) newErrors.firstName = 'First name is required';
         if (!deliveryInfo.lastName) newErrors.lastName = 'Last name is required';
         if (!deliveryInfo.address) newErrors.address = 'Address is required';
+        if (!deliveryInfo.phone) newErrors.phone = 'Phone number is required';
         if (cart.length === 0) newErrors.cart = 'Cart is Empty';
 
         setErrors(newErrors);
@@ -67,14 +69,14 @@ const CheckoutDetails = () => {
     const handleOrderSubmit = async () => {
         if (validateForm()) {
             setOrderSubmitted(true);
-            
+
             const orderData = {
                 cart: cart.map(item => ({
                     id: item._id,
                     quantity: item.quantity
                 }))
             };
-    
+
             try {
                 const response = await axios.post('http://localhost:5000/api/place-order', orderData);
                 if (response.status === 200) {
@@ -86,7 +88,7 @@ const CheckoutDetails = () => {
             }
         }
     };
-    
+
 
     const subTotal = () => {
         return cart.reduce((total, item) => total + (parseFloat(item.price.slice(3).replace(/,/g, '')) * item.quantity), 0);
@@ -188,6 +190,8 @@ const CheckoutDetails = () => {
                                         onChange={(e) => setDeliveryInfo({ ...deliveryInfo, firstName: e.target.value })}
                                         className={`input-field w-full p-3 border rounded-lg focus:outline-none ${errors.firstName ? 'border-red-500' : 'border-gray-300'} focus:border-gray-500`}
                                     />
+                                    {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName}</p>}
+
                                     <input
                                         type="text"
                                         placeholder="Last name"
@@ -195,6 +199,8 @@ const CheckoutDetails = () => {
                                         onChange={(e) => setDeliveryInfo({ ...deliveryInfo, lastName: e.target.value })}
                                         className={`input-field w-full p-3 border rounded-lg focus:outline-none ${errors.lastName ? 'border-red-500' : 'border-gray-300'} focus:border-gray-500`}
                                     />
+                                    {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName}</p>}
+
                                 </div>
                                 <input
                                     type="text"
@@ -203,6 +209,15 @@ const CheckoutDetails = () => {
                                     onChange={(e) => setDeliveryInfo({ ...deliveryInfo, company: e.target.value })}
                                     className="input-field w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500"
                                 />
+                                <input
+                                    type="tel"
+                                    placeholder="Phone Number"
+                                    value={deliveryInfo.phone}
+                                    onChange={(e) => setDeliveryInfo({ ...deliveryInfo, phone: e.target.value })}
+                                    className={`input-field w-full p-3 mb-4 border rounded-lg focus:outline-none ${errors.address ? 'border-red-500' : 'border-gray-300'} focus:border-gray-500`}
+                                />
+                                {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+
                                 <input
                                     type="text"
                                     placeholder="Address"
