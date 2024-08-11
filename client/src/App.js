@@ -13,7 +13,7 @@ import ProductDetails from './components/ProductDetails';
 import CategoryPage from './pages/CategoryPage';
 import Checkout from './pages/Checkout';
 import SearchResults from './pages/SearchResults';
-import HomeFooter from './components/HomeFooter';
+import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/search" element={<SearchResults />} />
           </Routes>
-          <HomeFooter />
+          <Footer />
         </div>
       </Router>
     </CartProvider>

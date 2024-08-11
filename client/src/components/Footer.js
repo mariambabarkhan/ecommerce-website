@@ -6,7 +6,7 @@ import logo from '../images/favicon.ico';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
-const HomeFooter = () => {
+const Footer = () => {
   const [email, setEmail] = useState('');
   const [submitStatus, setSubmitStatus] = useState(null);
 
@@ -180,4 +180,4 @@ const HomeFooter = () => {
   );
 };
 
-export default HomeFooter;
+export default Footer;
