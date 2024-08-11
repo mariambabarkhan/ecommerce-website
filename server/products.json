@@ -85,6 +85,7 @@
     "categories": [
       "moisturizers",
       "dehydration & dryness",
+      "Latest",
       "breakouts & acne",
       "dark spot & discoloration"
     ], "quantity": 100,
@@ -116,6 +117,7 @@
     "categories": [
       "serums",
       "dullness & uneven tone",
+      "Latest",
       "dark spot & discoloration",
       "breakouts & acne"
     ], "quantity": 100,
@@ -132,6 +134,7 @@
     "categories": [
       "serums",
       "dehydration & dryness",
+      "Latest",
       "aging",
       "dark spot & discoloration"
     ],
@@ -163,7 +166,8 @@
     "sale": false,
     "categories": [
       "cleansers",
-      "dehydration & dryness"
+      "dehydration & dryness",
+      "Latest"
     ],
     "quantity": 100,
     "description": "Our hydrating cleanser removes makeup, dirt and debris without disrupting the skins natural protective barrier or stripping the skin of its natural oils. Featuring hyaluronic acid, ceramides, aloe vera extract and vitamin e that work together to lock in moisture."
@@ -264,7 +268,8 @@
       "healthy aging",
       "breakouts & acne",
       "dullness & uneven tone",
-      "texture, pores & oily-skin"
+      "texture, pores & oily-skin",
+      "Latest"
     ],
     "quantity": 100,
     "description": "Our potent yet gentle retinol is perfect for beginners and advanced users. This advanced formula contains retinol with squalene oil and vitamin E to limit sensitivity and irritation. Benefits: Reduces fine lines, wrinkles, texture and uneven skin tone, stimulates collagen production, regenerates skin cells, reverses sun damage."
@@ -323,7 +328,8 @@
     "sale": false,
     "categories": [
       "sunscreens",
-      "sun-protection"
+      "sun-protection",
+      "Latest"
     ],
     "quantity": 100,
     "description": "Protect your skin while getting a healthy glow without any white cast. Our tinted sunscreen is non greasy, suitable for sensitive skin and seamlessly blends into all skin types. Apply two finger lengths onto face and neck at least 15 minutes before sun exposure. Reapply every 2 hours and after prolonged water exposure like swimming. Should be applied daily, even on cloudy days.",

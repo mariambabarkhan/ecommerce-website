@@ -31,7 +31,7 @@ function App() {
             <Route path="/collections/all" element={<AllCollections />} />
             <Route path="/collections/:category" element={<CategoryPage />} />
             <Route path="/product/:id" element={<ProductDetails />} />
-            <Route path="/search-results" element={<SearchResults />} />
+            <Route path="/search" element={<SearchResults />} />
           </Routes>
         </div>
       </Router>

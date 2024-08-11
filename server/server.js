@@ -80,14 +80,18 @@ app.post('/api/subscribe', async (req, res) => {
     }
 });
 
-app.get('/api/search/:term', async (req, res) => {
-    const query = req.params.term;
+app.get('/api/search', async (req, res) => {
+    const query = req.query.query;
     try {
         const results = await Product.find({
-            name: { $regex: query, $options: 'i' },
+            $or: [
+                { name: { $regex: query, $options: 'i' } },
+                { categories: { $regex: query, $options: 'i' } }
+            ]
         }).limit(10);
         res.json(results);
     } catch (error) {
+        console.error('Error occurred during search:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
@@ -112,6 +116,18 @@ app.get('/collections/:category', async (req, res) => {
             res.status(500).json({ message: err.message });
         }
     }
+});
+
+app.get('/latest-products', async (req, res) => {
+        try {
+            const category = "Latest";
+            const products = await Product.find({
+                categories: { $regex: category, $options: 'i' }
+            });
+            res.json(products);
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
 });
 
 app.get('/collections/all/:id', async (req, res) => {

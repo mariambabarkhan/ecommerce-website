@@ -44,13 +44,12 @@ const BuyVitC = () => {
                 />
             </div>
 
-            {/* Product Details Section */}
             <div className="w-full md:w-1/2 p-4">
                 <h2 className="text-xs font-thin mb-2">BLISSFUL</h2>
                 <h3 className="text-4xl font-semibold mb-4">Brightening Serum -</h3>
                 <h3 className="text-4xl font-semibold mb-4">Vitamin C</h3>
                 <p className="text-md font-thin font-body mb-4">Rs.2,200.00 PKR</p>
-                <p className="text-xs mb-4"><a href="/"><u>Shipping</u></a> calculated at checkout.</p>
+                <p className="text-xs mb-4"><a href="/"><u>Shipping</u></a> is calculated at checkout.</p>
 
                 {/* Size Selector */}
                 <div className="mb-4">
