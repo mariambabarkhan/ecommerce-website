@@ -1,7 +1,5 @@
 # Blissful Beauty Ecommerce Website
 
-![Blissful Beauty](public/img/wired-logo.png)
-
 ## Overview
 
 Blissful Cosmetics is a fully responsive ecommerce website built with React and Tailwind CSS, designed to replicate the look and feel of the [Shop Blissful Beauty](https://shopblissfulbeauty.com/) website. This project includes a frontend for displaying products, a backend powered by Node.js and MongoDB, and various features such as a shopping cart, product filtering, animations, and more.
