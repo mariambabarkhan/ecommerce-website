@@ -14,6 +14,7 @@ import CategoryPage from './pages/CategoryPage';
 import Checkout from './pages/Checkout';
 import SearchResults from './pages/SearchResults';
 import HomeFooter from './components/HomeFooter';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <div className="App">
           <Sale />
           <Navbar />
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
