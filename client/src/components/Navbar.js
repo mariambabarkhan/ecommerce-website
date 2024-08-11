@@ -13,6 +13,8 @@ const Navbar = () => {
     const menuRef = useRef(null);
     const { cartItemCount } = useCart();
 
+    const closeMenu = () => setOpenMenu(null);
+
     const toggleMenu = (menu) => {
         setOpenMenu(openMenu === menu ? null : menu);
     };
@@ -29,13 +31,17 @@ const Navbar = () => {
                 menuRef.current &&
                 !menuRef.current.contains(event.target)
             ) {
-                setOpenMenu(null);
+                closeMenu();
             }
         };
 
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
+
+    const handleNavLinkClick = () => {
+        closeMenu();
+    };
 
     const activeLinkClass = 'underline text-black';
     const inactiveLinkClass = 'text-gray-700 hover:underline hover:text-black';
@@ -72,14 +78,14 @@ const Navbar = () => {
                 <SearchMenu isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
                 <div ref={menuRef} className="tracking-widest flex mt-5 items-center justify-center space-x-6 text-sm">
-                    <NavLink 
-                        to="/" 
+                    <NavLink
+                        to="/" onClick={handleNavLinkClick}
                         className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}
                     >
                         Home
                     </NavLink>
-                    <NavLink 
-                        to="/collections/all" 
+                    <NavLink
+                        to="/collections/all" onClick={handleNavLinkClick}
                         className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}
                     >
                         Shop All
@@ -94,16 +100,16 @@ const Navbar = () => {
                         </button>
                         {openMenu === 'category' && (
                             <div className="absolute left-0 mt-2 w-48 bg-cartBadge border border-gray-200 shadow-lg rounded-2xl p-2">
-                                <Link to="/collections/serums" onClick={() => toggleMenu('category')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/serums" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Serum
                                 </Link>
-                                <Link to="/collections/moisturizers" onClick={() => toggleMenu('category')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/moisturizers" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Moisturizer
                                 </Link>
-                                <Link to="/collections/cleansers" onClick={() => toggleMenu('category')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/cleansers" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Cleanser
                                 </Link>
-                                <Link to="/collections/sunscreens" onClick={() => toggleMenu('category')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/sunscreens" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Sunscreen
                                 </Link>
                             </div>
@@ -119,47 +125,47 @@ const Navbar = () => {
                         </button>
                         {openMenu === 'skinConcern' && (
                             <div className="absolute left-0 mt-2 w-48 bg-cartBadge border border-gray-200 shadow-lg rounded-2xl p-2">
-                                <Link to="/collections/dryness" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/dryness" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dehydration & Dryness
                                 </Link>
-                                <Link to="/collections/dullness"  onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/dullness" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dullness & Uneven Tone
                                 </Link>
-                                <Link to="/collections/breakouts" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/breakouts" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Breakouts & Acne
                                 </Link>
-                                <Link to="/collections/oily-skin" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/oily-skin" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Texture, Pores & Oily Skin
                                 </Link>
-                                <Link to="/collections/discoloration" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/discoloration" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dark Spots & Discoloration
                                 </Link>
-                                <Link to="/collections/aging" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/aging" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Healthy Aging
                                 </Link>
-                                <Link to="/collections/cleansers" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/cleansers" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Makeup Removing & Deep Cleansing
                                 </Link>
-                                <Link to="/collections/sun-protection" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/sun-protection" onClick={handleNavLinkClick} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Sun Protection
                                 </Link>
                             </div>
                         )}
                     </div>
-                    <NavLink 
-                        to="/collections/bundles" 
+                    <NavLink
+                        to="/collections/bundles" onClick={handleNavLinkClick}
                         className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}
                     >
                         Bundles
                     </NavLink>
-                    <NavLink 
-                        to="/about" 
+                    <NavLink
+                        to="/about" onClick={handleNavLinkClick}
                         className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}
                     >
                         About Us
                     </NavLink>
-                    <NavLink 
-                        to="/contact" 
+                    <NavLink
+                        to="/contact" onClick={handleNavLinkClick}
                         className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}
                     >
                         Contact Us
