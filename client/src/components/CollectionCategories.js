@@ -54,7 +54,7 @@ const CollectionCategories = () => {
         {
             title: 'Bundles',
             img: 'https://shopblissfulbeauty.com/cdn/shop/files/Bright_GlowingSkinBundle.jpg?v=1701695573&width=535',
-            linkto: '/bundles'
+            linkto: '/collections/bundles'
         },
         {
             title: 'Cleansers',
@@ -84,7 +84,7 @@ const CollectionCategories = () => {
         {
             title: 'Makeup Removing & Deep Cleaning',
             img: 'https://shopblissfulbeauty.com/cdn/shop/files/IMG_0321-Enhanced-NR.jpg?v=1700379575&width=535',
-            linkto: '/collections/cleansing'
+            linkto: '/collections/cleansers'
         },
         {
             title: 'Moisturizers',
@@ -109,7 +109,7 @@ const CollectionCategories = () => {
         {
             title: 'Texture, Pores & Oily Skin',
             img: 'https://shopblissfulbeauty.com/cdn/shop/files/Serum3.jpg?v=1700380914&width=535',
-            linkto: '/collections/oilyskin'
+            linkto: '/collections/oily-skin'
         }
     ];
 
