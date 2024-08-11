@@ -21,6 +21,25 @@ const ContactForm = () => {
         message: "",
     });
     const [submitStatus, setSubmitStatus] = useState("");
+    const [errors, setErrors] = useState({});
+
+    const validate = () => {
+        const newErrors = {};
+        if (!formData.name) newErrors.name = "Name is required.";
+        if (!formData.email) {
+            newErrors.email = "Email is required.";
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            newErrors.email = "Email address is invalid.";
+        }
+        if (!formData.phone) newErrors.phone = "Phone number is required.";
+        else if (!/^\d{11}$/.test(formData.phone)) {
+            newErrors.phone = "Phone number must be 10 digits.";
+        }
+        if (!formData.message) newErrors.message = "Message is required.";
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -32,6 +51,8 @@ const ContactForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!validate()) return;
+
         try {
             await axios.post("http://localhost:5000/contact", formData);
             setSubmitStatus("Thanks for contacting us. We'll get back to you as soon as possible.");
@@ -41,6 +62,7 @@ const ContactForm = () => {
                 phone: "",
                 message: "",
             });
+            setErrors({});
         } catch (error) {
             setSubmitStatus("There was an error sending your message. Please try again.");
         }
@@ -59,24 +81,32 @@ const ContactForm = () => {
                 <h1 className="text-7xl font-bodyheading font-semibold text-black mb-20 tracking-wider text-center">Contact</h1>
                 <form className="flex flex-col space-y-4 w-1/2 mx-auto" onSubmit={handleSubmit}>
                     <div className="flex space-x-4 w-full">
-                        <input
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            placeholder="Name"
-                            autoComplete="name"
-                            className="border border-gray-600 rounded-xl p-2 flex-1"
-                        />
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="Email*"
-                            autoComplete="email"
-                            className="border border-gray-600 rounded-xl p-2 flex-1"
-                        />
+                        <div className="flex-1">
+                            <input
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Name"
+                                autoComplete="name"
+                                className={`border border-gray-600 rounded-xl p-2 w-full ${errors.name ? 'border-red-500' : ''}`}
+                                required
+                            />
+                            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+                        </div>
+                        <div className="flex-1">
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Email*"
+                                autoComplete="email"
+                                className={`border border-gray-600 rounded-xl p-2 w-full ${errors.email ? 'border-red-500' : ''}`}
+                                required
+                            />
+                            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                        </div>
                     </div>
                     <input
                         type="tel"
@@ -85,16 +115,21 @@ const ContactForm = () => {
                         onChange={handleChange}
                         placeholder="Phone Number"
                         autoComplete="tel"
-                        className="border border-gray-600 rounded-xl p-2 mb-6"
+                        className={`border border-gray-600 rounded-xl p-2 mb-6 w-full ${errors.phone ? 'border-red-500' : ''}`}
+                        pattern="\d{11}"
+                        required
                     />
+                    {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
                     <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Comments"
-                        className="border border-gray-600 rounded-xl p-2 mb-6"
+                        className={`border border-gray-600 rounded-xl p-2 mb-6 w-full ${errors.message ? 'border-red-500' : ''}`}
                         rows="4"
+                        required
                     />
+                    {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
                     <button
                         type="submit"
                         className="bg-cartBadge text-white p-2 rounded-md self-center w-1/4"

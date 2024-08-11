@@ -118,15 +118,15 @@ app.get('/collections/:category', async (req, res) => {
 });
 
 app.get('/latest-products', async (req, res) => {
-        try {
-            const category = "Latest";
-            const products = await Product.find({
-                categories: { $regex: category, $options: 'i' }
-            });
-            res.json(products);
-        } catch (err) {
-            res.status(500).json({ message: err.message });
-        }
+    try {
+        const category = "Latest";
+        const products = await Product.find({
+            categories: { $regex: category, $options: 'i' }
+        });
+        res.json(products);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
 });
 
 app.get('/collections/all/:id', async (req, res) => {
@@ -143,7 +143,7 @@ app.get('/collections/all/:id', async (req, res) => {
 
 app.post('/contact', async (req, res) => {
     const { name, email, phone, message } = req.body;
-
+    
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {

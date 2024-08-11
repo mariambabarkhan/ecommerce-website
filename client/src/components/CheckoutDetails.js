@@ -24,13 +24,33 @@ const CheckoutDetails = () => {
         phone: '',
     });
 
+    const validateName = (name) => /^[A-Za-z\s]+$/.test(name);
+    const validateAddress = (address) => /^[\w\s.,-]+$/.test(address);
+    const validatePhone = (phone) => /^\d{10,15}$/.test(phone);
+    const validateEmailFormat = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+
     const validateForm = () => {
         const newErrors = {};
+        
+        if (!validateEmailFormat(contactInfo.email)) newErrors.email = 'Invalid email format';
         if (!contactInfo.email) newErrors.email = 'Email is required';
+        
+        if (!validateName(deliveryInfo.firstName)) newErrors.firstName = 'First name should only contain letters';
         if (!deliveryInfo.firstName) newErrors.firstName = 'First name is required';
+        
+        if (!validateName(deliveryInfo.lastName)) newErrors.lastName = 'Last name should only contain letters';
         if (!deliveryInfo.lastName) newErrors.lastName = 'Last name is required';
+        
+        if (!validateAddress(deliveryInfo.address)) newErrors.address = 'Address contains invalid characters';
         if (!deliveryInfo.address) newErrors.address = 'Address is required';
+        
+        if (!validatePhone(deliveryInfo.phone)) newErrors.phone = 'Phone number should be between 10 and 15 digits';
         if (!deliveryInfo.phone) newErrors.phone = 'Phone number is required';
+
         if (cart.length === 0) newErrors.cart = 'Cart is Empty';
 
         setErrors(newErrors);
@@ -104,11 +124,6 @@ const CheckoutDetails = () => {
         if (checked) {
             handleSubscribe(e);
         }
-    };
-
-    const validateEmailFormat = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
     };
 
     const handleSubscribe = async (e) => {
