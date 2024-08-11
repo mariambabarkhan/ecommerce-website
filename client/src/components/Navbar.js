@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FiSearch, FiShoppingBag, FiChevronDown } from 'react-icons/fi';
 import logo from '../images/favicon.ico';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import SearchMenu from './SearchMenu';
 
@@ -37,6 +37,9 @@ const Navbar = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    const activeLinkClass = 'underline text-black';
+    const inactiveLinkClass = 'text-gray-700 hover:underline hover:text-black';
+
     return (
         <nav className="bg-white border-gray-200 font-body z-10 relative">
             <div className="max-w-6xl mx-auto px-4">
@@ -53,7 +56,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="flex-shrink-0">
-                        <Link to="/cart" className="p-2">
+                        <NavLink to="/cart" className="p-2">
                             <button className="p-2 relative">
                                 <FiShoppingBag size={24} />
                                 {cartItemCount > 0 && (
@@ -62,20 +65,25 @@ const Navbar = () => {
                                     </span>
                                 )}
                             </button>
-                        </Link>
+                        </NavLink>
                     </div>
                 </div>
 
                 <SearchMenu isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
-
-                <div ref={menuRef} className="tracking-widest flex mt-5 items-center justify-center space-x-6 text-sm text-gray-700">
-                    <a href="/" className="hover:underline hover:text-black">
+                <div ref={menuRef} className="tracking-widest flex mt-5 items-center justify-center space-x-6 text-sm">
+                    <NavLink 
+                        to="/" 
+                        className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}
+                    >
                         Home
-                    </a>
-                    <Link to="/collections/all" className="hover:underline hover:text-black">
+                    </NavLink>
+                    <NavLink 
+                        to="/collections/all" 
+                        className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}
+                    >
                         Shop All
-                    </Link>
+                    </NavLink>
                     <div className="relative z-10">
                         <button
                             onClick={() => toggleMenu('category')}
@@ -86,16 +94,16 @@ const Navbar = () => {
                         </button>
                         {openMenu === 'category' && (
                             <div className="absolute left-0 mt-2 w-48 bg-cartBadge border border-gray-200 shadow-lg rounded-2xl p-2">
-                                <Link to="/collections/serums" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/serums" onClick={() => toggleMenu('category')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Serum
                                 </Link>
-                                <Link to="/collections/moisturizers" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/moisturizers" onClick={() => toggleMenu('category')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Moisturizer
                                 </Link>
-                                <Link to="/collections/cleansers" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/cleansers" onClick={() => toggleMenu('category')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Cleanser
                                 </Link>
-                                <Link to="/collections/sunscreens" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/sunscreens" onClick={() => toggleMenu('category')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Sunscreen
                                 </Link>
                             </div>
@@ -111,42 +119,51 @@ const Navbar = () => {
                         </button>
                         {openMenu === 'skinConcern' && (
                             <div className="absolute left-0 mt-2 w-48 bg-cartBadge border border-gray-200 shadow-lg rounded-2xl p-2">
-                                <Link to="/collections/dryness" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/dryness" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dehydration & Dryness
                                 </Link>
-                                <Link to="/collections/dullness" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/dullness"  onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dullness & Uneven Tone
                                 </Link>
-                                <Link to="/collections/breakouts" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/breakouts" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Breakouts & Acne
                                 </Link>
-                                <Link to="/collections/oily-skin" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/oily-skin" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Texture, Pores & Oily Skin
                                 </Link>
-                                <Link to="/collections/discoloration" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/discoloration" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Dark Spots & Discoloration
                                 </Link>
-                                <Link to="/collections/aging" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/aging" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Healthy Aging
                                 </Link>
-                                <Link to="/collections/cleansers" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/cleansers" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Makeup Removing & Deep Cleansing
                                 </Link>
-                                <Link to="/collections/sun-protection" className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
+                                <Link to="/collections/sun-protection" onClick={() => toggleMenu('skinConcern')} className="block px-4 py-2 text-sm text-gray-100 hover:underline ">
                                     Sun Protection
                                 </Link>
                             </div>
                         )}
                     </div>
-                    <a href="/collections/bundles" className="hover:underline hover:text-black">
+                    <NavLink 
+                        to="/collections/bundles" 
+                        className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}
+                    >
                         Bundles
-                    </a>
-                    <Link to="/about" className="hover:underline hover:text-black">
+                    </NavLink>
+                    <NavLink 
+                        to="/about" 
+                        className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}
+                    >
                         About Us
-                    </Link>
-                    <Link to="/contact" className="hover:underline hover:text-black">
+                    </NavLink>
+                    <NavLink 
+                        to="/contact" 
+                        className={({ isActive }) => isActive ? activeLinkClass : inactiveLinkClass}
+                    >
                         Contact Us
-                    </Link>
+                    </NavLink>
                 </div>
             </div>
         </nav>
