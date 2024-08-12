@@ -15,6 +15,7 @@ import Checkout from './pages/Checkout';
 import SearchResults from './pages/SearchResults';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Sale />
           <Navbar />
           <ScrollToTop />
+          <Analytics />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
