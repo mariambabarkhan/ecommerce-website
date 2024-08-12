@@ -60,7 +60,7 @@ const CategoryPage = () => {
                 <h1 className="text-6xl font-semibold self-start mb-12 capitalize">{category}</h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                     {products.map((product, index) => {
-                        const isOutOfStock = product.quantity < 5; // Logic to check if the product is out of stock
+                        const isOutOfStock = product.quantity < 5;
                         return (
                             <motion.div
                                 key={product._id}

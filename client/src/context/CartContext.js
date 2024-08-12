@@ -19,10 +19,6 @@ export const CartProvider = ({ children }) => {
         setCart([]);
     };
 
-    // useEffect(() => {
-    //     localStorage.removeItem('cart');
-    // }, []);
-
     const addToCart = (product) => {
         setCart((prevCart) => {
             const existingProductIndex = prevCart.findIndex(item => item._id === product._id);
@@ -73,3 +69,4 @@ export const CartProvider = ({ children }) => {
 };
 
 export const useCart = () => useContext(CartContext);
+

@@ -25,7 +25,7 @@ const CheckoutDetails = () => {
     });
 
     const validateName = (name) => /^[A-Za-z\s]+$/.test(name);
-    const validateAddress = (address) => /^[\w\s.,-]+$/.test(address);
+    const validateAddress = (address) => /^[\w\s.,-/#]+$/.test(address);
     const validatePhone = (phone) => /^\d{10,15}$/.test(phone);
     const validateEmailFormat = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
