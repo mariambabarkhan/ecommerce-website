@@ -44,7 +44,7 @@ const Footer = () => {
       return;
     }
     try {
-      const response = await axios.post('${process.env.REACT_APP_API_URL}api/subscribe', { email });
+      const response = await axios.post('https://blissfulpk-server.vercel.app/api/subscribe', { email });
       setSubmitStatus({ message: response.data.message, type: 'success' });
       setEmail('');
     } catch (error) {

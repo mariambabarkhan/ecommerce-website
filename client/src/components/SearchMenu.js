@@ -24,7 +24,7 @@ const SearchMenu = ({ isOpen, onClose }) => {
         setSearchQuery(query);
         if (query.trim() !== '') {
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}api/search?query=${encodeURIComponent(query)}`);
+                const response = await fetch(`https://blissfulpk-server.vercel.app/api/search?query=${encodeURIComponent(query)}`);
                 if (!response.ok) {
                     console.error('Error fetching search results:', response.statusText);
                     throw new Error('Network response was not ok');
