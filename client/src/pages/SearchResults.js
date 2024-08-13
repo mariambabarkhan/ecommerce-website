@@ -43,7 +43,7 @@ const SearchResults = () => {
             setError(null);
             try {
                 console.log('Fetching products for query:', query); 
-                const response = await fetch(`http://localhost:5000/api/search?query=${encodeURIComponent(query)}`);
+                const response = await fetch(`${process.env.REACT_APP_API_URL}api/search?query=${encodeURIComponent(query)}`);
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
                 console.log('Fetched products:', data); 

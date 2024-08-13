@@ -98,7 +98,7 @@ const CheckoutDetails = () => {
             };
 
             try {
-                const response = await axios.post('http://localhost:5000/api/place-order', orderData);
+                const response = await axios.post('${process.env.REACT_APP_API_URL}api/place-order', orderData);
                 if (response.status === 200) {
                     setShowConfetti(true);
                 }
@@ -134,7 +134,7 @@ const CheckoutDetails = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/api/subscribe', { email: contactInfo.email });
+            const response = await axios.post('${process.env.REACT_APP_API_URL}api/subscribe', { email: contactInfo.email });
             setSubmitStatus({ message: response.data.message, type: 'success' });
             console.log(response.data.message);
             setContactInfo({ ...contactInfo, subscribe: true });
