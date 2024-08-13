@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const emailValidator = require('email-validator');
 const dns = require('dns');
-const Product = require('./models/Product');
+const Product = require('../models/Product');
 
 const app = express();
 app.use(cors());
