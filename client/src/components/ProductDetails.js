@@ -19,7 +19,7 @@ const ProductDetails = () => {
 
     const fetchProduct = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/collections/all/${id}`);
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URI}/collections/all/${id}`);
             setProduct(response.data);
         } catch (err) {
             console.error(err);

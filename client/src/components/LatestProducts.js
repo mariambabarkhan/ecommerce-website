@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const LatestProducts = () => {
+    console.log(process.env.REACT_APP_SERVER_URI);
     const [products, setProducts] = useState([]);
     const [hovered, setHovered] = useState(null);
 
@@ -15,7 +16,7 @@ const LatestProducts = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/latest-products');
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URI}/latest-products`);
             setProducts(response.data);
         } catch (err) {
             console.error(err);

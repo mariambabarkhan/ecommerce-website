@@ -18,7 +18,7 @@ const Products = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/collections/all');
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URI}/collections/all`);
             setProducts(response.data);
         } catch (err) {
             console.error(err);
