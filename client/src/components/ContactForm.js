@@ -54,7 +54,7 @@ const ContactForm = () => {
         if (!validate()) return;
 
         try {
-            await axios.post("https://blissfulpk-server.vercel.app/contact", formData);
+            await axios.post("http://localhost:5000/contact", formData);
             setSubmitStatus("Thanks for contacting us. We'll get back to you as soon as possible.");
             setFormData({
                 name: "",

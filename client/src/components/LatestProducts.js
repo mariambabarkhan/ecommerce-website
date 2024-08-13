@@ -15,7 +15,7 @@ const LatestProducts = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('https://blissfulpk-server.vercel.app/latest-products');
+            const response = await axios.get('http://localhost:5000/latest-products');
             setProducts(response.data);
         } catch (err) {
             console.error(err);

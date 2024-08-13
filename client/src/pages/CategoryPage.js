@@ -19,7 +19,7 @@ const CategoryPage = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get(`https://blissfulpk-server.vercel.app/collections/${category}`);
+            const response = await axios.get(`http://localhost:5000/collections/${category}`);
             setProducts(response.data);
         } catch (err) {
             console.error(err);
