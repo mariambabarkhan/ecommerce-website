@@ -9,11 +9,13 @@ const emailValidator = require('email-validator');
 const dns = require('dns');
 const Product = require('../models/Product');
 
+console.log(process.env.MONGODB_ATLAS_URI);
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_ATLAS_URI)
     .then(() => {
         console.log('Connected to MongoDB successfully');
     })
