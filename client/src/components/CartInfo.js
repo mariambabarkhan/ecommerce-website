@@ -11,47 +11,49 @@ const CartInfo = () => {
     };
 
     return (
-        <div className="container mx-auto p-12">
+        <div className="container mx-auto p-4 sm:p-6 lg:p-12">
             {cart.length === 0 ? (
-                <div className="flex flex-col space-y-4 mt-20">
-                    <p className="font-heading text-5xl mb-10 self-center">Your cart is empty :(</p>
+                <div className="flex flex-col items-center mt-20">
+                    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading mb-6">Your cart is empty :(</p>
                     <Link
                         to="/collections/all"
-                        className="bg-cartBadge py-3 px-4 w-1/4 text-center rounded-xl text-white font-heading self-center hover:bg-customPurple"
+                        className="bg-cartBadge py-2 px-4 sm:py-3 sm:px-6 text-center rounded-xl text-white font-heading hover:bg-customPurple"
                     >
                         Continue Shopping
                     </Link>
                 </div>
             ) : (
                 <div>
-                    <h1 className="text-3xl font-heading mb-10">Your Cart</h1>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading mb-8">Your Cart</h1>
 
                     <div className="flex flex-col space-y-4">
                         {cart.map((item) => (
-                            <div key={item._id} className="flex justify-between items-center border-b py-4">
-                                <img src={item.image} alt={item.name} className="w-24 h-24 object-cover" />
-                                <div className="flex-1 ml-4">
-                                    <h2 className="text-lg font-semibold">{item.name}</h2>
+                            <div key={item._id} className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b py-4">
+                                <img src={item.image} alt={item.name} className="w-24 h-24 sm:w-32 sm:h-32 object-cover" />
+                                <div className="flex-1 ml-0 sm:ml-4 mt-4 sm:mt-0">
+                                    <h2 className="text-lg sm:text-xl font-semibold">{item.name}</h2>
                                     {item.size && <p className="text-gray-600">Size: {item.size}</p>}
                                     <p className="text-gray-600">Price: {item.price}</p>
                                     <div className="flex items-center mt-2">
                                         <button
                                             onClick={() => updateQuantity(item._id, item.quantity - 1)}
                                             disabled={item.quantity <= 1}
-                                            className="px-2 py-1 bg-gray-200 rounded"
+                                            className="px-2 py-1 bg-gray-200 rounded text-sm sm:text-base"
                                         >
                                             -
                                         </button>
-                                        <span className="mx-4">{item.quantity}</span>
+                                        <span className="mx-4 text-sm sm:text-base">{item.quantity}</span>
                                         <button
                                             onClick={() => updateQuantity(item._id, item.quantity + 1)}
-                                            className="px-2 py-1 bg-gray-200 rounded"
+                                            className="px-2 py-1 bg-gray-200 rounded text-sm sm:text-base"
                                         >
                                             +
                                         </button>
 
-                                        <button onClick={() => removeFromCart(item._id)}
-                                            className="ml-4 text-gray-600 hover:text-gray-800">
+                                        <button
+                                            onClick={() => removeFromCart(item._id)}
+                                            className="ml-4 text-gray-600 hover:text-gray-800 text-sm sm:text-base"
+                                        >
                                             <FaTrash />
                                         </button>
                                     </div>
@@ -59,20 +61,20 @@ const CartInfo = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="mt-6 flex justify-between items-center font-semibold text-lg">
-                        <span>Total:</span>
-                        <span>Rs. {calculateTotal()}</span>
+                    <div className="mt-6 flex flex-col sm:flex-row justify-between items-center font-semibold text-lg">
+                        <span className="text-sm sm:text-base">Total:</span>
+                        <span className="text-lg sm:text-xl">Rs. {calculateTotal()}</span>
                     </div>
-                    <div className="mt-6 flex justify-between">
+                    <div className="mt-6 flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0 sm:space-x-4">
                         <Link
                             to="/checkout"
-                            className="bg-cartBadge text-white py-2 px-4 rounded hover:bg-customPurple"
+                            className="bg-cartBadge text-white py-2 px-4 rounded hover:bg-customPurple text-center"
                         >
                             Checkout
                         </Link>
                         <Link
                             to="/collections/all"
-                            className="bg-cartBadge py-2 px-4 rounded text-white font-body hover:bg-customPurple"
+                            className="bg-cartBadge py-2 px-4 rounded text-white font-body text-center hover:bg-customPurple"
                         >
                             Continue Shopping
                         </Link>
