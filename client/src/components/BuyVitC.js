@@ -80,7 +80,7 @@ const BuyVitC = () => {
                         </button>
                     </Link>
                     <div className="flex items-center">
-                        <Link to="http://localhost:3000/product/66b4bd564f957c539594246b" className="text-black hover:underline flex items-center">
+                        <Link to={`${process.env.REACT_APP_SERVER_URI}/product/66b4bd564f957c539594246b`} className="text-black hover:underline flex items-center">
                             View full details
                             <FiArrowRight className="ml-2 text-lg transition-transform duration-300 transform hover:scale-110" />
                         </Link>
